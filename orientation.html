@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,6 +6,46 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Orientation | RT Study</title>
 <link rel="stylesheet" href="style.css">
+<style>
+.weekBlock{margin:16px 0}
+.weekHeader{
+  background:linear-gradient(135deg,var(--cream),var(--pink));
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+.weekHeader h2{margin:0 0 6px;color:#7D6478}
+.weekHeader p{margin:0;color:var(--muted)}
+.studyGrid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin-top:12px;
+}
+.studyCard{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:16px;
+}
+.studyCard h3{margin:0 0 8px;color:#7D6478}
+.studyCard ul{margin:8px 0 0;padding-left:20px;color:var(--text)}
+.studyCard li{margin:6px 0}
+.tagRow{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.tag{
+  display:inline-block;
+  padding:7px 10px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid var(--border);
+  color:#7D6478;
+  font-size:13px;
+  font-weight:800;
+}
+.smallNote{font-size:14px;color:var(--muted);margin-top:10px}
+@media(max-width:760px){.studyGrid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -12,23 +53,253 @@
 
   <section class="hero">
     <h1>☢️ Orientation to Radiation Therapy</h1>
-    <p>Weeks 1–9 only.</p>
+    <p>Weeks 1–9 organized inside the app. No final review added yet.</p>
   </section>
 
   <section class="card">
-    <h2>Weeks</h2>
+    <h2>Quick Week List</h2>
     <div class="list">
-      <a class="week" href="#"><strong>Week 1</strong><span>Coming soon</span></a>
-      <a class="week" href="#"><strong>Week 2</strong><span>Coming soon</span></a>
-      <a class="week" href="#"><strong>Week 3</strong><span>Coming soon</span></a>
-      <a class="week" href="#"><strong>Week 4</strong><span>Coming soon</span></a>
-      <a class="week" href="#"><strong>Week 5</strong><span>Coming soon</span></a>
-      <a class="week" href="#"><strong>Week 6</strong><span>Coming soon</span></a>
-      <a class="week" href="#"><strong>Week 7 Midterm</strong><span>Coming soon</span></a>
-      <a class="week" href="#"><strong>Week 8</strong><span>Coming soon</span></a>
-      <a class="week" href="#"><strong>Week 9</strong><span>Current</span></a>
+      <a class="week" href="#week1"><strong>Week 1</strong><span>Intro + TNM</span></a>
+      <a class="week" href="#week2"><strong>Week 2</strong><span>Chapter 1 Part 2</span></a>
+      <a class="week" href="#week3"><strong>Week 3</strong><span>Chapter 2 Review</span></a>
+      <a class="week" href="#week4"><strong>Week 4</strong><span>Ethics</span></a>
+      <a class="week" href="#week5"><strong>Week 5</strong><span>Patient Assessment</span></a>
+      <a class="week" href="#week6"><strong>Week 6</strong><span>Biomechanics + Ergonomics</span></a>
+      <a class="week" href="#week7"><strong>Week 7</strong><span>Midterm Review</span></a>
+      <a class="week" href="#week8"><strong>Week 8</strong><span>Detection + Diagnosis</span></a>
+      <a class="week" href="#week9"><strong>Week 9</strong><span>Current / next material</span></a>
     </div>
   </section>
+
+  <section id="week1" class="weekBlock">
+    <div class="weekHeader">
+      <h2>Week 1 — Introduction + TNM</h2>
+      <p>Core foundation for orientation and cancer staging language.</p>
+    </div>
+    <div class="studyGrid">
+      <div class="studyCard">
+        <h3>📖 Study Guide</h3>
+        <ul>
+          <li>Radiation therapy team roles</li>
+          <li>Radiation oncology workflow</li>
+          <li>Basic cancer terminology</li>
+          <li>TNM staging: Tumor, Nodes, Metastasis</li>
+        </ul>
+      </div>
+      <div class="studyCard">
+        <h3>📝 Practice Focus</h3>
+        <ul>
+          <li>What each team member does</li>
+          <li>How staging describes cancer spread</li>
+          <li>Difference between diagnosis, staging, and treatment</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="week2" class="weekBlock">
+    <div class="weekHeader">
+      <h2>Week 2 — Chapter 1 Part 2</h2>
+      <p>Continues the basic orientation foundation.</p>
+    </div>
+    <div class="studyGrid">
+      <div class="studyCard">
+        <h3>📖 Study Guide</h3>
+        <ul>
+          <li>Radiation therapy process</li>
+          <li>Patient pathway through care</li>
+          <li>Basic professional responsibilities</li>
+        </ul>
+      </div>
+      <div class="studyCard">
+        <h3>📝 Practice Focus</h3>
+        <ul>
+          <li>Order of care steps</li>
+          <li>Why accurate documentation matters</li>
+          <li>Common patient-care vocabulary</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="week3" class="weekBlock">
+    <div class="weekHeader">
+      <h2>Week 3 — Chapter 2 Review</h2>
+      <p>Review-question week for Chapter 2 concepts.</p>
+    </div>
+    <div class="studyGrid">
+      <div class="studyCard">
+        <h3>📖 Study Guide</h3>
+        <ul>
+          <li>Chapter 2 key ideas</li>
+          <li>Homework review question concepts</li>
+          <li>Definitions and short-answer practice</li>
+        </ul>
+      </div>
+      <div class="studyCard">
+        <h3>📝 Practice Focus</h3>
+        <ul>
+          <li>Answering in simple clinical language</li>
+          <li>Recognizing professor vocabulary</li>
+          <li>Turning review questions into quiz questions</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="week4" class="weekBlock">
+    <div class="weekHeader">
+      <h2>Week 4 — Ethics</h2>
+      <p>Professional behavior, ethical decision-making, and patient respect.</p>
+    </div>
+    <div class="studyGrid">
+      <div class="studyCard">
+        <h3>📖 Study Guide</h3>
+        <ul>
+          <li>Ethical principles</li>
+          <li>Patient rights</li>
+          <li>Confidentiality and professional boundaries</li>
+          <li>Safe and respectful patient care</li>
+        </ul>
+      </div>
+      <div class="studyCard">
+        <h3>📝 Practice Focus</h3>
+        <ul>
+          <li>What is ethical vs unethical behavior</li>
+          <li>How to protect patient privacy</li>
+          <li>How therapists should respond professionally</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="week5" class="weekBlock">
+    <div class="weekHeader">
+      <h2>Week 5 — Patient Assessment</h2>
+      <p>Patient assessment basics from Chapter 3 materials.</p>
+    </div>
+    <div class="studyGrid">
+      <div class="studyCard">
+        <h3>📖 Study Guide</h3>
+        <ul>
+          <li>Patient observation</li>
+          <li>Signs and symptoms</li>
+          <li>Communication during assessment</li>
+          <li>When to report concerns</li>
+        </ul>
+      </div>
+      <div class="studyCard">
+        <h3>📝 Practice Focus</h3>
+        <ul>
+          <li>Recognizing patient changes</li>
+          <li>Safety concerns before treatment</li>
+          <li>Clear reporting to the care team</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="week6" class="weekBlock">
+    <div class="weekHeader">
+      <h2>Week 6 — Biomechanics + Ergonomics</h2>
+      <p>Protecting the patient and yourself during positioning and transfers.</p>
+    </div>
+    <div class="studyGrid">
+      <div class="studyCard">
+        <h3>📖 Study Guide</h3>
+        <ul>
+          <li>Body mechanics</li>
+          <li>Safe patient movement</li>
+          <li>Ergonomic positioning</li>
+          <li>Preventing therapist injury</li>
+        </ul>
+      </div>
+      <div class="studyCard">
+        <h3>📝 Practice Focus</h3>
+        <ul>
+          <li>Proper lifting and transfer technique</li>
+          <li>Why alignment matters</li>
+          <li>Reducing strain during treatment setup</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="week7" class="weekBlock">
+    <div class="weekHeader">
+      <h2>Week 7 — Midterm Review</h2>
+      <p>Review of orientation content before the midterm.</p>
+    </div>
+    <div class="studyGrid">
+      <div class="studyCard">
+        <h3>📖 Review Topics</h3>
+        <ul>
+          <li>Weeks 1–6 major concepts</li>
+          <li>Vocabulary review</li>
+          <li>Patient care and ethics</li>
+          <li>Safety and professional behavior</li>
+        </ul>
+      </div>
+      <div class="studyCard">
+        <h3>📝 Practice Focus</h3>
+        <ul>
+          <li>Mixed review questions</li>
+          <li>Weak-topic review</li>
+          <li>Short explanations after each answer</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="week8" class="weekBlock">
+    <div class="weekHeader">
+      <h2>Week 8 — Detection + Diagnosis</h2>
+      <p>How cancer is detected, diagnosed, and confirmed before treatment.</p>
+    </div>
+    <div class="studyGrid">
+      <div class="studyCard">
+        <h3>📖 Study Guide</h3>
+        <ul>
+          <li>Screening vs diagnosis</li>
+          <li>Diagnostic imaging</li>
+          <li>Biopsy and pathology</li>
+          <li>How diagnosis connects to treatment planning</li>
+        </ul>
+      </div>
+      <div class="studyCard">
+        <h3>📝 Practice Focus</h3>
+        <ul>
+          <li>Difference between detection and diagnosis</li>
+          <li>Why pathology matters</li>
+          <li>Role of imaging in cancer workup</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="week9" class="weekBlock">
+    <div class="weekHeader">
+      <h2>Week 9 — Current Week</h2>
+      <p>This section is ready for the next Orientation material.</p>
+    </div>
+    <div class="studyGrid">
+      <div class="studyCard">
+        <h3>📖 Study Guide</h3>
+        <ul>
+          <li>Week 9 content will be added here as soon as the current file content is processed.</li>
+          <li>No final review is included yet because you said there are still more weeks coming.</li>
+        </ul>
+      </div>
+      <div class="studyCard">
+        <h3>📝 Practice Focus</h3>
+        <ul>
+          <li>Current-week quiz questions will be added in the next Orientation update.</li>
+          <li>This page is already structured so Week 9 can be expanded without changing the app layout.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
 </div>
 </body>
 </html>
