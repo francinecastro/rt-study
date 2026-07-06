@@ -1,305 +1,692 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Orientation | RT Study</title>
-<link rel="stylesheet" href="style.css">
-<style>
-.weekBlock{margin:16px 0}
-.weekHeader{
-  background:linear-gradient(135deg,var(--cream),var(--pink));
-  border:1px solid var(--border);
-  border-radius:24px;
-  padding:18px;
-  box-shadow:var(--shadow);
-}
-.weekHeader h2{margin:0 0 6px;color:#7D6478}
-.weekHeader p{margin:0;color:var(--muted)}
-.studyGrid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:12px;
-  margin-top:12px;
-}
-.studyCard{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:16px;
-}
-.studyCard h3{margin:0 0 8px;color:#7D6478}
-.studyCard ul{margin:8px 0 0;padding-left:20px;color:var(--text)}
-.studyCard li{margin:6px 0}
-.tagRow{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-.tag{
-  display:inline-block;
-  padding:7px 10px;
-  border-radius:999px;
-  background:#fff;
-  border:1px solid var(--border);
-  color:#7D6478;
-  font-size:13px;
-  font-weight:800;
-}
-.smallNote{font-size:14px;color:var(--muted);margin-top:10px}
-@media(max-width:760px){.studyGrid{grid-template-columns:1fr}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orientation to Radiation Therapy</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #fff4f8, #f4edff);
+      color: #4b3f4e;
+    }
+
+    header {
+      padding: 24px;
+      text-align: center;
+      background: #ffd9e8;
+      border-bottom: 3px solid #f3b6d0;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      color: #5d3f6a;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      color: #7a647d;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .week-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .week-card {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 6px 18px rgba(160, 110, 150, 0.18);
+      cursor: pointer;
+      transition: 0.2s;
+      border: 2px solid #f7c7dc;
+    }
+
+    .week-card:hover {
+      transform: translateY(-4px);
+      background: #fff8fb;
+    }
+
+    .week-card h2 {
+      color: #c45c8c;
+      margin-top: 0;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .panel {
+      background: white;
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 6px 18px rgba(160, 110, 150, 0.18);
+      border: 2px solid #f7c7dc;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 12px 18px;
+      background: #e7c7ff;
+      color: #4b2f5c;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #d9a8ff;
+    }
+
+    .back-btn {
+      background: #ffd1df;
+      margin-bottom: 20px;
+    }
+
+    .note-box, .flashcard, .quiz-box {
+      background: #fff6fa;
+      border-left: 5px solid #e58ab2;
+      border-radius: 14px;
+      padding: 16px;
+      margin: 14px 0;
+    }
+
+    .flashcard {
+      cursor: pointer;
+    }
+
+    .answer {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #7b3f90;
+    }
+
+    .option {
+      display: block;
+      margin: 10px 0;
+      padding: 12px;
+      background: #f8eaff;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .correct {
+      background: #d8f5d0;
+    }
+
+    .wrong {
+      background: #ffd6d6;
+    }
+
+    .score {
+      font-size: 20px;
+      font-weight: bold;
+      color: #9b4f7a;
+      margin-top: 15px;
+    }
+  </style>
 </head>
+
 <body>
-<div class="wrap">
-  <a class="back" href="index.html">← Home</a>
 
-  <section class="hero">
-    <h1>☢️ Orientation to Radiation Therapy</h1>
-    <p>Weeks 1–9 organized inside the app. No final review added yet.</p>
-  </section>
+<header>
+  <h1>Orientation to Radiation Therapy</h1>
+  <div class="subtitle">RT Study App 2.0</div>
+</header>
 
-  <section class="card">
-    <h2>Quick Week List</h2>
-    <div class="list">
-      <a class="week" href="#week1"><strong>Week 1</strong><span>Intro + TNM</span></a>
-      <a class="week" href="#week2"><strong>Week 2</strong><span>Chapter 1 Part 2</span></a>
-      <a class="week" href="#week3"><strong>Week 3</strong><span>Chapter 2 Review</span></a>
-      <a class="week" href="#week4"><strong>Week 4</strong><span>Ethics</span></a>
-      <a class="week" href="#week5"><strong>Week 5</strong><span>Patient Assessment</span></a>
-      <a class="week" href="#week6"><strong>Week 6</strong><span>Biomechanics + Ergonomics</span></a>
-      <a class="week" href="#week7"><strong>Week 7</strong><span>Midterm Review</span></a>
-      <a class="week" href="#week8"><strong>Week 8</strong><span>Detection + Diagnosis</span></a>
-      <a class="week" href="#week9"><strong>Week 9</strong><span>Current / next material</span></a>
-    </div>
-  </section>
+<div class="container">
 
-  <section id="week1" class="weekBlock">
-    <div class="weekHeader">
-      <h2>Week 1 — Introduction + TNM</h2>
-      <p>Core foundation for orientation and cancer staging language.</p>
-    </div>
-    <div class="studyGrid">
-      <div class="studyCard">
-        <h3>📖 Study Guide</h3>
-        <ul>
-          <li>Radiation therapy team roles</li>
-          <li>Radiation oncology workflow</li>
-          <li>Basic cancer terminology</li>
-          <li>TNM staging: Tumor, Nodes, Metastasis</li>
-        </ul>
-      </div>
-      <div class="studyCard">
-        <h3>📝 Practice Focus</h3>
-        <ul>
-          <li>What each team member does</li>
-          <li>How staging describes cancer spread</li>
-          <li>Difference between diagnosis, staging, and treatment</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+  <div id="home">
+    <div class="week-grid" id="weekGrid"></div>
+  </div>
 
-  <section id="week2" class="weekBlock">
-    <div class="weekHeader">
-      <h2>Week 2 — Chapter 1 Part 2</h2>
-      <p>Continues the basic orientation foundation.</p>
-    </div>
-    <div class="studyGrid">
-      <div class="studyCard">
-        <h3>📖 Study Guide</h3>
-        <ul>
-          <li>Radiation therapy process</li>
-          <li>Patient pathway through care</li>
-          <li>Basic professional responsibilities</li>
-        </ul>
-      </div>
-      <div class="studyCard">
-        <h3>📝 Practice Focus</h3>
-        <ul>
-          <li>Order of care steps</li>
-          <li>Why accurate documentation matters</li>
-          <li>Common patient-care vocabulary</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+  <div id="weekPage" class="hidden">
+    <button class="back-btn" onclick="goHome()">← Back to Weeks</button>
 
-  <section id="week3" class="weekBlock">
-    <div class="weekHeader">
-      <h2>Week 3 — Chapter 2 Review</h2>
-      <p>Review-question week for Chapter 2 concepts.</p>
-    </div>
-    <div class="studyGrid">
-      <div class="studyCard">
-        <h3>📖 Study Guide</h3>
-        <ul>
-          <li>Chapter 2 key ideas</li>
-          <li>Homework review question concepts</li>
-          <li>Definitions and short-answer practice</li>
-        </ul>
-      </div>
-      <div class="studyCard">
-        <h3>📝 Practice Focus</h3>
-        <ul>
-          <li>Answering in simple clinical language</li>
-          <li>Recognizing professor vocabulary</li>
-          <li>Turning review questions into quiz questions</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+    <div class="panel">
+      <h2 id="weekTitle"></h2>
+      <p id="weekTopic"></p>
 
-  <section id="week4" class="weekBlock">
-    <div class="weekHeader">
-      <h2>Week 4 — Ethics</h2>
-      <p>Professional behavior, ethical decision-making, and patient respect.</p>
-    </div>
-    <div class="studyGrid">
-      <div class="studyCard">
-        <h3>📖 Study Guide</h3>
-        <ul>
-          <li>Ethical principles</li>
-          <li>Patient rights</li>
-          <li>Confidentiality and professional boundaries</li>
-          <li>Safe and respectful patient care</li>
-        </ul>
+      <div class="tabs">
+        <button onclick="showTab('notes')">Notes</button>
+        <button onclick="showTab('flashcards')">Flashcards</button>
+        <button onclick="showTab('quiz')">Practice Quiz</button>
+        <button onclick="showTab('missed')">Missed Questions</button>
       </div>
-      <div class="studyCard">
-        <h3>📝 Practice Focus</h3>
-        <ul>
-          <li>What is ethical vs unethical behavior</li>
-          <li>How to protect patient privacy</li>
-          <li>How therapists should respond professionally</li>
-        </ul>
-      </div>
-    </div>
-  </section>
 
-  <section id="week5" class="weekBlock">
-    <div class="weekHeader">
-      <h2>Week 5 — Patient Assessment</h2>
-      <p>Patient assessment basics from Chapter 3 materials.</p>
+      <div id="notes"></div>
+      <div id="flashcards" class="hidden"></div>
+      <div id="quiz" class="hidden"></div>
+      <div id="missed" class="hidden"></div>
     </div>
-    <div class="studyGrid">
-      <div class="studyCard">
-        <h3>📖 Study Guide</h3>
-        <ul>
-          <li>Patient observation</li>
-          <li>Signs and symptoms</li>
-          <li>Communication during assessment</li>
-          <li>When to report concerns</li>
-        </ul>
-      </div>
-      <div class="studyCard">
-        <h3>📝 Practice Focus</h3>
-        <ul>
-          <li>Recognizing patient changes</li>
-          <li>Safety concerns before treatment</li>
-          <li>Clear reporting to the care team</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="week6" class="weekBlock">
-    <div class="weekHeader">
-      <h2>Week 6 — Biomechanics + Ergonomics</h2>
-      <p>Protecting the patient and yourself during positioning and transfers.</p>
-    </div>
-    <div class="studyGrid">
-      <div class="studyCard">
-        <h3>📖 Study Guide</h3>
-        <ul>
-          <li>Body mechanics</li>
-          <li>Safe patient movement</li>
-          <li>Ergonomic positioning</li>
-          <li>Preventing therapist injury</li>
-        </ul>
-      </div>
-      <div class="studyCard">
-        <h3>📝 Practice Focus</h3>
-        <ul>
-          <li>Proper lifting and transfer technique</li>
-          <li>Why alignment matters</li>
-          <li>Reducing strain during treatment setup</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="week7" class="weekBlock">
-    <div class="weekHeader">
-      <h2>Week 7 — Midterm Review</h2>
-      <p>Review of orientation content before the midterm.</p>
-    </div>
-    <div class="studyGrid">
-      <div class="studyCard">
-        <h3>📖 Review Topics</h3>
-        <ul>
-          <li>Weeks 1–6 major concepts</li>
-          <li>Vocabulary review</li>
-          <li>Patient care and ethics</li>
-          <li>Safety and professional behavior</li>
-        </ul>
-      </div>
-      <div class="studyCard">
-        <h3>📝 Practice Focus</h3>
-        <ul>
-          <li>Mixed review questions</li>
-          <li>Weak-topic review</li>
-          <li>Short explanations after each answer</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="week8" class="weekBlock">
-    <div class="weekHeader">
-      <h2>Week 8 — Detection + Diagnosis</h2>
-      <p>How cancer is detected, diagnosed, and confirmed before treatment.</p>
-    </div>
-    <div class="studyGrid">
-      <div class="studyCard">
-        <h3>📖 Study Guide</h3>
-        <ul>
-          <li>Screening vs diagnosis</li>
-          <li>Diagnostic imaging</li>
-          <li>Biopsy and pathology</li>
-          <li>How diagnosis connects to treatment planning</li>
-        </ul>
-      </div>
-      <div class="studyCard">
-        <h3>📝 Practice Focus</h3>
-        <ul>
-          <li>Difference between detection and diagnosis</li>
-          <li>Why pathology matters</li>
-          <li>Role of imaging in cancer workup</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="week9" class="weekBlock">
-    <div class="weekHeader">
-      <h2>Week 9 — Current Week</h2>
-      <p>This section is ready for the next Orientation material.</p>
-    </div>
-    <div class="studyGrid">
-      <div class="studyCard">
-        <h3>📖 Study Guide</h3>
-        <ul>
-          <li>Week 9 content will be added here as soon as the current file content is processed.</li>
-          <li>No final review is included yet because you said there are still more weeks coming.</li>
-        </ul>
-      </div>
-      <div class="studyCard">
-        <h3>📝 Practice Focus</h3>
-        <ul>
-          <li>Current-week quiz questions will be added in the next Orientation update.</li>
-          <li>This page is already structured so Week 9 can be expanded without changing the app layout.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+  </div>
 
 </div>
+
+<script>
+const orientationWeeks = [
+  {
+    week: 1,
+    title: "Week 1",
+    topic: "Introduction to Radiation Therapy",
+    notes: [
+      "Radiation therapy uses radiation to treat cancer.",
+      "The goal is to damage cancer cells while protecting healthy tissue.",
+      "Radiation therapists work closely with patients every day.",
+      "A LINAC is the machine commonly used to deliver external beam radiation."
+    ],
+    flashcards: [
+      {
+        q: "What is radiation therapy?",
+        a: "A cancer treatment that uses radiation to damage cancer cells."
+      },
+      {
+        q: "What does LINAC stand for?",
+        a: "Linear accelerator."
+      },
+      {
+        q: "What is the main goal of radiation therapy?",
+        a: "Treat the tumor while protecting normal tissue."
+      }
+    ],
+    quiz: [
+      {
+        q: "What machine is commonly used for external beam radiation therapy?",
+        options: ["MRI", "LINAC", "Ultrasound", "PET scanner"],
+        answer: "LINAC"
+      },
+      {
+        q: "What is the main goal of radiation therapy?",
+        options: [
+          "Only remove the tumor surgically",
+          "Damage cancer cells while protecting healthy tissue",
+          "Replace chemotherapy",
+          "Diagnose all cancers"
+        ],
+        answer: "Damage cancer cells while protecting healthy tissue"
+      }
+    ]
+  },
+
+  {
+    week: 2,
+    title: "Week 2",
+    topic: "Cancer Basics and Treatment Team",
+    notes: [
+      "Cancer is uncontrolled cell growth.",
+      "Benign tumors do not spread to other body areas.",
+      "Malignant tumors can invade and spread.",
+      "Radiation oncology is a team-based field."
+    ],
+    flashcards: [
+      {
+        q: "What does malignant mean?",
+        a: "Cancerous and able to invade or spread."
+      },
+      {
+        q: "What does benign mean?",
+        a: "Not cancerous and does not spread."
+      }
+    ],
+    quiz: [
+      {
+        q: "Which word means cancerous?",
+        options: ["Benign", "Malignant", "Normal", "Stable"],
+        answer: "Malignant"
+      }
+    ]
+  },
+
+  {
+    week: 3,
+    title: "Week 3",
+    topic: "Ethics and Patient Care",
+    notes: [
+      "Ethics means doing what is right for the patient.",
+      "Patient privacy must be protected.",
+      "Respect, honesty, and safety are very important.",
+      "Therapists must communicate clearly and kindly."
+    ],
+    flashcards: [
+      {
+        q: "What does ethics mean in healthcare?",
+        a: "Doing what is right and safe for the patient."
+      },
+      {
+        q: "Why is privacy important?",
+        a: "Because patient information must be protected."
+      }
+    ],
+    quiz: [
+      {
+        q: "Which action protects patient privacy?",
+        options: [
+          "Talking about patients in public",
+          "Sharing photos",
+          "Keeping patient information confidential",
+          "Posting patient details online"
+        ],
+        answer: "Keeping patient information confidential"
+      }
+    ]
+  },
+
+  {
+    week: 4,
+    title: "Week 4",
+    topic: "Professionalism",
+    notes: [
+      "Professionalism means acting responsibly at school, clinic, and work.",
+      "Being on time matters.",
+      "Good communication builds trust.",
+      "Patients should feel safe and respected."
+    ],
+    flashcards: [
+      {
+        q: "What does professionalism mean?",
+        a: "Acting responsibly, respectfully, and safely."
+      }
+    ],
+    quiz: [
+      {
+        q: "Which is an example of professionalism?",
+        options: [
+          "Ignoring patient questions",
+          "Being late often",
+          "Respectful communication",
+          "Using rude language"
+        ],
+        answer: "Respectful communication"
+      }
+    ]
+  },
+
+  {
+    week: 5,
+    title: "Week 5",
+    topic: "Patient Assessment",
+    notes: [
+      "Patient assessment means checking the patient before, during, and after treatment.",
+      "Therapists observe pain, skin changes, mobility, and emotional needs.",
+      "Changes should be reported to the correct team member.",
+      "Safety is always first."
+    ],
+    flashcards: [
+      {
+        q: "What is patient assessment?",
+        a: "Checking the patient’s condition and needs."
+      },
+      {
+        q: "What should a therapist do if something changes?",
+        a: "Report it to the correct healthcare team member."
+      }
+    ],
+    quiz: [
+      {
+        q: "What is the purpose of patient assessment?",
+        options: [
+          "To ignore symptoms",
+          "To check patient condition and safety",
+          "To replace the doctor",
+          "To diagnose cancer alone"
+        ],
+        answer: "To check patient condition and safety"
+      }
+    ]
+  },
+
+  {
+    week: 6,
+    title: "Week 6",
+    topic: "Biomechanics and Ergonomics",
+    notes: [
+      "Biomechanics is how the body moves.",
+      "Ergonomics helps prevent injury while working.",
+      "Proper body mechanics protect the therapist and patient.",
+      "Good posture helps prevent back and shoulder injury."
+    ],
+    flashcards: [
+      {
+        q: "What is ergonomics?",
+        a: "Setting up work safely to prevent injury."
+      },
+      {
+        q: "Why does body mechanics matter?",
+        a: "It protects the therapist and patient from injury."
+      }
+    ],
+    quiz: [
+      {
+        q: "What is the main goal of ergonomics?",
+        options: [
+          "To make work unsafe",
+          "To prevent injury",
+          "To increase radiation dose",
+          "To diagnose disease"
+        ],
+        answer: "To prevent injury"
+      }
+    ]
+  },
+
+  {
+    week: 7,
+    title: "Week 7",
+    topic: "Midterm Review",
+    notes: [
+      "Review important terms from Weeks 1–6.",
+      "Focus on radiation therapy basics, ethics, professionalism, patient care, and safety.",
+      "Practice missed questions often.",
+      "Use flashcards for quick recall."
+    ],
+    flashcards: [
+      {
+        q: "What should you review for midterm?",
+        a: "Weeks 1–6 key terms, safety, patient care, and ethics."
+      }
+    ],
+    quiz: [
+      {
+        q: "What is the best study method for missed topics?",
+        options: [
+          "Skip them",
+          "Only read once",
+          "Practice missed questions again",
+          "Avoid flashcards"
+        ],
+        answer: "Practice missed questions again"
+      }
+    ]
+  },
+
+  {
+    week: 8,
+    title: "Week 8",
+    topic: "Detection and Diagnosis",
+    notes: [
+      "Detection means finding possible disease.",
+      "Diagnosis means identifying the disease.",
+      "Imaging and tests help doctors diagnose cancer.",
+      "Radiation therapists do not diagnose patients."
+    ],
+    flashcards: [
+      {
+        q: "What does detection mean?",
+        a: "Finding signs of possible disease."
+      },
+      {
+        q: "What does diagnosis mean?",
+        a: "Identifying the disease."
+      }
+    ],
+    quiz: [
+      {
+        q: "Who diagnoses disease?",
+        options: [
+          "Radiation therapist alone",
+          "The doctor",
+          "The patient",
+          "The receptionist"
+        ],
+        answer: "The doctor"
+      }
+    ]
+  },
+
+  {
+    week: 9,
+    title: "Week 9",
+    topic: "Final Review Placeholder",
+    notes: [
+      "Week 9 content will be added when the Week 9 professor material is uploaded.",
+      "Use this section for final exam review later.",
+      "Practice all prior weeks until more content is added."
+    ],
+    flashcards: [
+      {
+        q: "What should Week 9 be used for right now?",
+        a: "Final review and practice from older weeks."
+      }
+    ],
+    quiz: [
+      {
+        q: "What should you do until Week 9 material is added?",
+        options: [
+          "Stop studying",
+          "Review older weeks",
+          "Delete the app",
+          "Skip the final"
+        ],
+        answer: "Review older weeks"
+      }
+    ]
+  }
+];
+
+let currentWeek = null;
+let currentQuizIndex = 0;
+let score = 0;
+
+function loadWeeks() {
+  const grid = document.getElementById("weekGrid");
+  grid.innerHTML = "";
+
+  orientationWeeks.forEach(week => {
+    const card = document.createElement("div");
+    card.className = "week-card";
+    card.innerHTML = `
+      <h2>${week.title}</h2>
+      <p>${week.topic}</p>
+      <p><strong>Notes • Flashcards • Quiz</strong></p>
+    `;
+    card.onclick = () => openWeek(week.week);
+    grid.appendChild(card);
+  });
+}
+
+function openWeek(weekNumber) {
+  currentWeek = orientationWeeks.find(w => w.week === weekNumber);
+  currentQuizIndex = 0;
+  score = 0;
+
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("weekPage").classList.remove("hidden");
+
+  document.getElementById("weekTitle").textContent = currentWeek.title;
+  document.getElementById("weekTopic").textContent = currentWeek.topic;
+
+  loadNotes();
+  loadFlashcards();
+  loadQuiz();
+  loadMissed();
+
+  showTab("notes");
+}
+
+function goHome() {
+  document.getElementById("weekPage").classList.add("hidden");
+  document.getElementById("home").classList.remove("hidden");
+}
+
+function showTab(tabName) {
+  ["notes", "flashcards", "quiz", "missed"].forEach(tab => {
+    document.getElementById(tab).classList.add("hidden");
+  });
+
+  document.getElementById(tabName).classList.remove("hidden");
+}
+
+function loadNotes() {
+  const notesDiv = document.getElementById("notes");
+  notesDiv.innerHTML = "";
+
+  currentWeek.notes.forEach(note => {
+    const box = document.createElement("div");
+    box.className = "note-box";
+    box.textContent = note;
+    notesDiv.appendChild(box);
+  });
+}
+
+function loadFlashcards() {
+  const flashDiv = document.getElementById("flashcards");
+  flashDiv.innerHTML = "";
+
+  currentWeek.flashcards.forEach(card => {
+    const div = document.createElement("div");
+    div.className = "flashcard";
+    div.innerHTML = `
+      <strong>Q:</strong> ${card.q}
+      <div class="answer hidden"><strong>A:</strong> ${card.a}</div>
+    `;
+
+    div.onclick = () => {
+      div.querySelector(".answer").classList.toggle("hidden");
+    };
+
+    flashDiv.appendChild(div);
+  });
+}
+
+function loadQuiz() {
+  const quizDiv = document.getElementById("quiz");
+  quizDiv.innerHTML = "";
+  currentQuizIndex = 0;
+  score = 0;
+  showQuestion();
+}
+
+function showQuestion() {
+  const quizDiv = document.getElementById("quiz");
+
+  if (currentQuizIndex >= currentWeek.quiz.length) {
+    quizDiv.innerHTML = `
+      <div class="quiz-box">
+        <h3>Quiz Complete!</h3>
+        <div class="score">Score: ${score} / ${currentWeek.quiz.length}</div>
+        <button onclick="loadQuiz()">Restart Quiz</button>
+      </div>
+    `;
+    return;
+  }
+
+  const question = currentWeek.quiz[currentQuizIndex];
+
+  quizDiv.innerHTML = `
+    <div class="quiz-box">
+      <h3>Question ${currentQuizIndex + 1}</h3>
+      <p>${question.q}</p>
+      <div id="options"></div>
+    </div>
+  `;
+
+  const optionsDiv = document.getElementById("options");
+
+  question.options.forEach(option => {
+    const opt = document.createElement("div");
+    opt.className = "option";
+    opt.textContent = option;
+    opt.onclick = () => checkAnswer(opt, option, question.answer, question);
+    optionsDiv.appendChild(opt);
+  });
+}
+
+function checkAnswer(element, selected, correct, question) {
+  const allOptions = document.querySelectorAll(".option");
+
+  allOptions.forEach(opt => {
+    opt.onclick = null;
+
+    if (opt.textContent === correct) {
+      opt.classList.add("correct");
+    }
+
+    if (opt.textContent === selected && selected !== correct) {
+      opt.classList.add("wrong");
+    }
+  });
+
+  if (selected === correct) {
+    score++;
+  } else {
+    saveMissedQuestion(question, selected);
+  }
+
+  setTimeout(() => {
+    currentQuizIndex++;
+    showQuestion();
+  }, 1200);
+}
+
+function saveMissedQuestion(question, selected) {
+  const missed = JSON.parse(localStorage.getItem("orientationMissedQuestions")) || [];
+
+  missed.push({
+    week: currentWeek.title,
+    topic: currentWeek.topic,
+    question: question.q,
+    correctAnswer: question.answer,
+    selectedAnswer: selected
+  });
+
+  localStorage.setItem("orientationMissedQuestions", JSON.stringify(missed));
+}
+
+function loadMissed() {
+  const missedDiv = document.getElementById("missed");
+  const missed = JSON.parse(localStorage.getItem("orientationMissedQuestions")) || [];
+
+  if (missed.length === 0) {
+    missedDiv.innerHTML = `
+      <div class="note-box">
+        No missed questions yet. Nice job!
+      </div>
+    `;
+    return;
+  }
+
+  missedDiv.innerHTML = `
+    <button onclick="clearMissed()">Clear Missed Questions</button>
+  `;
+
+  missed.forEach(item => {
+    const box = document.createElement("div");
+    box.className = "quiz-box";
+    box.innerHTML = `
+      <strong>${item.week}</strong>
+      <p>${item.question}</p>
+      <p><strong>Your answer:</strong> ${item.selectedAnswer}</p>
+      <p><strong>Correct answer:</strong> ${item.correctAnswer}</p>
+    `;
+    missedDiv.appendChild(box);
+  });
+}
+
+function clearMissed() {
+  localStorage.removeItem("orientationMissedQuestions");
+  loadMissed();
+}
+
+loadWeeks();
+</script>
+
 </body>
 </html>
