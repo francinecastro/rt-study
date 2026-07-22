@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orientation Weeks 10–11 | Chapter 9 Infection Control</title>
+<style>
+:root {
+  --pink:#eb96b7; --pink2:#f1b6cd; --pink3:#f6d0df;
+  --cream:#fffafb; --ink:#433b40; --muted:#766a70;
+  --green:#dcefdc; --red:#f8d9df; --white:#fff;
+  --shadow:0 10px 30px rgba(110,74,91,.12);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#fffafb,#fbeff4);color:var(--ink);line-height:1.55}
+header{padding:42px 20px 30px;text-align:center;background:linear-gradient(135deg,var(--pink3),#fff);border-bottom:1px solid #f1d5df}
+header h1{margin:0;font-size:clamp(2rem,5vw,3.5rem)}
+header p{margin:10px auto 0;max-width:760px;color:var(--muted);font-size:1.05rem}
+.badge{display:inline-block;background:var(--pink);color:white;padding:7px 14px;border-radius:999px;font-weight:700;margin-bottom:14px}
+nav{position:sticky;top:0;z-index:10;background:rgba(255,250,251,.94);backdrop-filter:blur(10px);padding:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;border-bottom:1px solid #f0dbe3}
+nav button, .btn{border:0;border-radius:999px;padding:10px 17px;font-weight:700;cursor:pointer;background:white;color:var(--ink);box-shadow:0 3px 10px rgba(80,50,65,.08)}
+nav button.active,.btn.primary{background:var(--pink);color:white}
+main{max-width:1050px;margin:0 auto;padding:28px 18px 60px}
+.panel{display:none} .panel.active{display:block}
+.hero-note{background:white;border-left:6px solid var(--pink);padding:18px 20px;border-radius:16px;box-shadow:var(--shadow);margin-bottom:22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.study-card{background:white;border-radius:20px;padding:20px;box-shadow:var(--shadow);border:1px solid #f4dfe7}
+.study-card h3{margin:0 0 10px;color:#a64870}
+.study-card ul{padding-left:20px;margin:0}
+.mustknow{background:linear-gradient(135deg,#fff,#fce4ed);border:2px solid var(--pink);border-radius:20px;padding:20px;margin-bottom:20px}
+.mustknow h2{margin-top:0}
+.flash-wrap,.quiz-wrap{max-width:760px;margin:0 auto}
+.flashcard{min-height:340px;background:white;border-radius:26px;box-shadow:var(--shadow);padding:32px;display:flex;flex-direction:column;justify-content:center;text-align:center;cursor:pointer;border:2px solid #f3dbe4}
+.flashcard .label{text-transform:uppercase;letter-spacing:.12em;color:#a85b7a;font-size:.8rem;font-weight:800}
+.flashcard h2{font-size:clamp(1.4rem,4vw,2.2rem)}
+.flashcard .answer{display:none;font-size:1.25rem;color:#5c4c54}
+.flashcard.flipped .question{display:none} .flashcard.flipped .answer{display:block}
+.controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px}
+.progress{height:12px;background:#f0e2e8;border-radius:999px;overflow:hidden;margin:16px 0}
+.progress span{display:block;height:100%;background:var(--pink);width:0}
+.quiz-card{background:white;border-radius:22px;padding:24px;box-shadow:var(--shadow)}
+.choice{display:block;width:100%;text-align:left;margin:10px 0;padding:14px 16px;border:2px solid #eadbe1;background:#fff;border-radius:14px;cursor:pointer;font-size:1rem}
+.choice:hover{border-color:var(--pink)} .choice.correct{background:var(--green);border-color:#8bc18b} .choice.wrong{background:var(--red);border-color:#d98da0}
+.explain{display:none;margin-top:15px;padding:14px;border-radius:14px;background:#f8f2f5}
+.scorebox{text-align:center;background:white;border-radius:22px;padding:28px;box-shadow:var(--shadow)}
+.small{color:var(--muted);font-size:.92rem}
+.term-table{width:100%;border-collapse:separate;border-spacing:0 8px}
+.term-table td{background:white;padding:13px;border-top:1px solid #f0dbe3;border-bottom:1px solid #f0dbe3}
+.term-table td:first-child{font-weight:800;border-left:1px solid #f0dbe3;border-radius:12px 0 0 12px;width:30%}
+.term-table td:last-child{border-right:1px solid #f0dbe3;border-radius:0 12px 12px 0}
+footer{text-align:center;padding:25px;color:var(--muted)}
+@media(max-width:600px){header{padding-top:28px}main{padding:18px 12px 40px}.flashcard{min-height:300px;padding:22px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="badge">Orientation to Radiation Therapy</div>
+  <h1>Weeks 10–11: Chapter 9</h1>
+  <p>Infection Control in Radiation Oncology Facilities</p>
+</header>
+<nav>
+  <button class="tab active" data-tab="guide">Study Guide</button>
+  <button class="tab" data-tab="must">Must Know</button>
+  <button class="tab" data-tab="terms">Key Terms</button>
+  <button class="tab" data-tab="flash">Flashcards</button>
+  <button class="tab" data-tab="quiz">Practice Quiz</button>
+</nav>
+<main>
+<section id="guide" class="panel active">
+  <div class="hero-note"><strong>Built only from Professor PowerPoint Chapter 9, Parts 1 and 2.</strong><br>
+  Use this page to review the lecture material in simple English.</div>
+  <div class="grid"><section class="study-card"><h3>1. Standard Precautions</h3><ul><li>Used for every patient, even when no infection is known.</li><li>Apply to blood; body fluids, secretions, and excretions except sweat; nonintact skin; and mucous membranes.</li><li>Main goal: prevent HAIs and protect patients, staff, and the community.</li><li>Transmission-based precautions are the second tier and are used for specific infections.</li></ul></section><section class="study-card"><h3>2. Hand Hygiene and Gloves</h3><ul><li>Soap and water: 40–60 seconds.</li><li>Alcohol-based hand rub: 20–30 seconds when hands are not visibly dirty.</li><li>Clean hands before patient contact and aseptic tasks.</li><li>Clean hands after patient contact, glove removal, or touching nearby equipment.</li><li>Gloves are used for blood, body fluids, mucous membranes, and broken skin.</li><li>Change gloves between dirty and clean tasks—even on the same patient.</li><li>Natural, unpolished, short, neat fingernails.</li></ul></section><section class="study-card"><h3>3. PPE</h3><ul><li>Masks, eye protection, and face shields protect the eyes, nose, and mouth from splashes or sprays.</li><li>Do not touch the front of a used mask.</li><li>A surgical mask is not the same as an N95 respirator.</li><li>Use a clean, nonsterile gown for most procedures.</li><li>Choose gown material based on expected fluid exposure.</li></ul></section><section class="study-card"><h3>4. Needles, Tattooing, Equipment, and Linen</h3><ul><li>Wear gloves for tattooing.</li><li>Clean skin with alcohol and allow it to dry fully.</li><li>Never reuse an ink syringe.</li><li>Discard needles immediately in a sharps container at the point of use.</li><li>Never recap or manipulate a used needle.</li><li>Reprocess reusable equipment before reuse. Dispose of single-use items.</li><li>Treat contaminated linen as potentially infectious.</li></ul></section><section class="study-card"><h3>5. Respiratory Hygiene</h3><ul><li>Identify and isolate symptomatic patients or visitors.</li><li>Offer masks to coughing patients.</li><li>Provide tissues, no-touch trash cans, signage, and alcohol hand rub.</li><li>Use a private room or designated area when a person cannot follow cough etiquette.</li></ul></section><section class="study-card"><h3>6. HCW Rights, OSHA, and Confidentiality</h3><ul><li>HCWs may refuse unsafe work but must report the unsafe condition.</li><li>The employer must be informed before OSHA is contacted.</li><li>Retaliation for reporting is illegal.</li><li>Education should correct misinformation and fear.</li><li>After education shows minimal risk, refusal to care may result in termination.</li><li>Work-acquired infection must be proven for Workers’ Compensation.</li><li>HCW medical information and patient records must remain confidential.</li></ul></section><section class="study-card"><h3>7. Central Service and Reprocessing</h3><ul><li>CSD prepares, sterilizes, and distributes equipment.</li><li>Centralization improves efficiency, cost-effectiveness, and quality.</li><li>CSD must meet The Joint Commission standards.</li><li>Equipment is pre-cleaned, decontaminated, disassembled, processed, sterilized, and labeled with a control number.</li></ul></section><section class="study-card"><h3>8. Equipment Classification</h3><ul><li>Critical: must be sterile. Example: surgical instruments.</li><li>Semicritical: high-level disinfection is acceptable. Example: endoscopes.</li><li>Noncritical: contacts intact skin and is cleaned. Example: blood pressure cuffs.</li><li>Sterilization destroys all microbial life, including spores.</li><li>Disinfection lowers microbial load.</li><li>Antiseptics are used on skin.</li></ul></section><section class="study-card"><h3>9. Sterilization Methods</h3><ul><li>Steam/autoclave: steam under pressure; most common, reliable, and cost-effective.</li><li>Gravity displacement: about 121°C for 15–30 minutes.</li><li>Prevacuum: about 132°C for 4 minutes.</li><li>Dry heat: 150–170°C for 60–150 minutes; glassware, powders, metal tools.</li><li>Incineration: biohazard waste.</li><li>ETO gas: heat-sensitive equipment; slower and more costly.</li><li>Hydrogen peroxide plasma: fast, low residue, not for cellulose.</li><li>Ozone: low temperature; may be used for stainless steel.</li><li>Radiation: industrial gamma or X-ray sterilization; not routinely used in the facility.</li><li>Chemical liquids require careful selection, compatibility checks, and disposal.</li></ul></section><section class="study-card"><h3>10. Quality Control</h3><ul><li>Indicators: mechanical, chemical, and biologic.</li><li>Biologic indicators are the gold standard.</li><li>The Joint Commission requires routine testing and documentation.</li></ul></section></div>
+</section>
+
+<section id="must" class="panel">
+  <div class="mustknow">
+    <h2>⭐ Must Know Numbers</h2>
+    <ul>
+      <li><strong>Soap and water:</strong> 40–60 seconds</li>
+      <li><strong>Alcohol hand rub:</strong> 20–30 seconds</li>
+      <li><strong>Gravity steam:</strong> about 121°C for 15–30 minutes</li>
+      <li><strong>Prevacuum steam:</strong> about 132°C for 4 minutes</li>
+      <li><strong>Dry heat:</strong> 150–170°C for 60–150 minutes</li>
+    </ul>
+  </div>
+  <div class="grid">
+    <section class="study-card"><h3>Hand Hygiene</h3><p>The most important and effective way to reduce HAIs.</p></section>
+    <section class="study-card"><h3>Gloves</h3><p>Wear for blood, body fluids, mucous membranes, broken skin, and tattooing. Gloves never replace hand hygiene.</p></section>
+    <section class="study-card"><h3>Needles</h3><p>Never recap. Never reuse ink syringes. Dispose immediately at the point of use.</p></section>
+    <section class="study-card"><h3>Critical Items</h3><p>Must be sterile.</p></section>
+    <section class="study-card"><h3>Sterilization</h3><p>Destroys all microbial life, including spores.</p></section>
+    <section class="study-card"><h3>Gold Standard</h3><p>Biologic indicator.</p></section>
+    <section class="study-card"><h3>OSHA</h3><p>Report the unsafe condition to the employer first. Retaliation is illegal.</p></section>
+    <section class="study-card"><h3>Traceability</h3><p>Reprocessed equipment receives a control number.</p></section>
+  </div>
+</section>
+
+<section id="terms" class="panel">
+<table class="term-table">
+<tr><td>HAI</td><td>Healthcare-associated infection.</td></tr>
+<tr><td>Standard Precautions</td><td>Basic precautions used for every patient.</td></tr>
+<tr><td>Transmission-Based Precautions</td><td>Extra precautions for a specific infection.</td></tr>
+<tr><td>Aseptic</td><td>Preventing contamination by microorganisms.</td></tr>
+<tr><td>CSD</td><td>Central Service Department.</td></tr>
+<tr><td>Critical Item</td><td>An item that must be sterile.</td></tr>
+<tr><td>Semicritical Item</td><td>An item that requires high-level disinfection.</td></tr>
+<tr><td>Noncritical Item</td><td>An item that contacts intact skin and requires cleaning.</td></tr>
+<tr><td>Sterilization</td><td>Destroys all microbial life, including spores.</td></tr>
+<tr><td>Disinfection</td><td>Reduces microbial load.</td></tr>
+<tr><td>Antiseptic</td><td>A chemical used on skin.</td></tr>
+<tr><td>Autoclave</td><td>A device that sterilizes using steam under pressure.</td></tr>
+<tr><td>ETO</td><td>Ethylene oxide gas used for heat-sensitive equipment.</td></tr>
+<tr><td>Biologic Indicator</td><td>The gold-standard test of sterilization effectiveness.</td></tr>
+<tr><td>Traceability</td><td>Ability to track a reprocessed item using its control number.</td></tr>
+</table>
+</section>
+
+<section id="flash" class="panel">
+<div class="flash-wrap">
+  <div class="small" id="fcCount"></div>
+  <div class="progress"><span id="fcProgress"></span></div>
+  <div class="flashcard" id="flashcard">
+    <div class="question"><div class="label">Question</div><h2 id="fcQ"></h2><p class="small">Click the card to reveal the answer.</p></div>
+    <div class="answer"><div class="label">Answer</div><h2 id="fcA"></h2></div>
+  </div>
+  <div class="controls">
+    <button class="btn" onclick="prevCard()">← Previous</button>
+    <button class="btn" onclick="shuffleCards()">Shuffle</button>
+    <button class="btn primary" onclick="nextCard()">Next →</button>
+  </div>
+</div>
+</section>
+
+<section id="quiz" class="panel">
+<div class="quiz-wrap">
+  <div id="quizArea"></div>
+</div>
+</section>
+</main>
+<footer>Francine Castro • RT Study 2.0 • Orientation Weeks 10–11</footer>
+
+<script>
+const flashcards = [["What are Standard Precautions?", "Infection-control steps used for every patient, regardless of diagnosis or known infection."], ["Why are Standard Precautions important in radiation oncology?", "They prevent healthcare-associated infections and protect immunocompromised patients, staff, and the community."], ["What assumption supports Standard Precautions?", "All blood and body fluids may be infectious."], ["What four areas do Standard Precautions apply to?", "Blood; body fluids, secretions, and excretions except sweat; nonintact skin; and mucous membranes."], ["What are transmission-based precautions?", "Extra precautions used only for patients with specific known or suspected infections."], ["What is the most effective way to reduce healthcare-associated infections?", "Hand hygiene."], ["How long should hands be washed with soap and water?", "40–60 seconds."], ["How long should alcohol-based hand rub be used?", "20–30 seconds."], ["When should soap and water be used?", "When hands are visibly dirty."], ["When can alcohol-based hand rub be used?", "When hands are not visibly dirty."], ["When should hand hygiene be performed before patient care?", "Before touching a patient or performing an aseptic task."], ["When should hand hygiene be performed after patient care?", "After patient contact, glove removal, or touching nearby equipment and surfaces."], ["What should fingernails look like for patient care?", "Natural, unpolished, short, and neat."], ["What type of gloves are used for most patient-care tasks?", "Clean, nonsterile gloves."], ["When are gloves required?", "When contact with blood, body fluids, mucous membranes, or broken skin is expected."], ["Do gloves replace hand hygiene?", "No. Perform hand hygiene after removing gloves."], ["Why should gloves be changed between tasks on the same patient?", "To avoid moving microorganisms from a contaminated site to a clean site."], ["What areas do masks, eye protection, and face shields protect?", "The eyes, nose, and mouth."], ["When should face protection be worn?", "During procedures that may create splashes or sprays of blood or body fluids."], ["What part of a used mask should not be touched?", "The front."], ["Is a surgical mask the same as an N95 respirator?", "No. A surgical mask is not a particulate respirator."], ["What is the purpose of a gown?", "To protect skin and clothing from splashes, sprays, and contamination."], ["What type of gown is used for most procedures?", "A clean, nonsterile gown."], ["How should gown material be selected?", "Based on the expected amount of fluid exposure."], ["What must be done before tattooing a patient?", "Wear gloves, clean the area with alcohol, and allow it to dry completely."], ["Can an ink syringe be reused if the needle is changed?", "No. Never reuse an ink syringe."], ["Where should a used needle be discarded?", "Immediately into a sharps container at the point of use."], ["Should used needles be recapped?", "No. Never recap or manipulate used needles."], ["How should reusable patient-care equipment be handled?", "Clean, disinfect, or reprocess it before reuse."], ["What should happen to single-use items?", "Dispose of them properly after one use."], ["What surfaces require environmental cleaning?", "Treatment couches, treatment equipment, simulation rooms, and frequently touched surfaces."], ["How should soiled linen be handled?", "Carefully, using appropriate PPE and avoiding actions that spread pathogens."], ["How should blood-contaminated linen be treated?", "As potentially infectious."], ["What should replace mouth-to-mouth resuscitation?", "A resuscitation bag, mouthpiece, or ventilation device."], ["What should be offered to coughing patients?", "A mask."], ["What respiratory supplies should be available?", "Tissues, no-touch trash containers, and alcohol-based hand rub."], ["Where should a patient unable to follow cough etiquette be placed?", "In a private room or designated area."], ["What must a healthcare worker do before contacting OSHA about an unsafe condition?", "Inform the employer of the unsafe condition."], ["Can a healthcare worker refuse unsafe work?", "Yes, but the unsafe condition must be reported."], ["Is retaliation for reporting an unsafe condition legal?", "No."], ["Can a healthcare worker be punished for filing an OSHA complaint?", "No."], ["What may happen if a worker refuses care after education shows minimal risk?", "The refusal may result in termination."], ["What must be proven for Workers’ Compensation coverage of an infection?", "The infection must be work-acquired and occur within the scope of practice."], ["When may additional legal claims be allowed for a work-acquired infection?", "When intentional harm is proven."], ["How must healthcare workers’ medical information be handled?", "It must remain confidential."], ["Who may access a patient chart?", "Only people directly involved in the patient’s care."], ["What does the Central Service Department do?", "Prepares, sterilizes, and distributes equipment."], ["Why is equipment reprocessing centralized?", "For efficiency, cost-effectiveness, quality, and expert control."], ["What standards must Central Service meet?", "The Joint Commission quality standards."], ["What happens first to contaminated equipment?", "It is pre-cleaned and decontaminated."], ["What PPE may reprocessing staff wear?", "Waterproof aprons and face shields."], ["Why is reprocessed equipment labeled with a control number?", "For traceability."], ["What are critical medical items?", "Items that must be sterile, such as surgical instruments."], ["What are semicritical medical items?", "Items that require at least high-level disinfection, such as endoscopes."], ["What are noncritical medical items?", "Items that contact intact skin and require cleaning, such as blood pressure cuffs."], ["What is sterilization?", "Destruction of all microbial life, including spores."], ["What is disinfection?", "Reduction of microbial load; it may be high, intermediate, or low level."], ["Where are antiseptics used?", "On skin, not on inanimate objects."], ["What is the most common, reliable, and cost-effective sterilization method?", "Steam sterilization or autoclaving."], ["How does an autoclave sterilize?", "It uses steam under pressure."], ["What are typical gravity-displacement autoclave settings?", "About 121°C for 15–30 minutes."], ["What are typical prevacuum autoclave settings?", "About 132°C for 4 minutes."], ["What are limitations of steam sterilization?", "It may damage heat-sensitive items and may cause corrosion."], ["What are typical dry-heat settings?", "150–170°C for 60–150 minutes."], ["What items are best suited for dry heat?", "Glassware, powders, and metal tools."], ["What is incineration used for?", "Biohazard waste."], ["What gas is used for gas sterilization?", "Ethylene oxide, or ETO."], ["What equipment is ETO best for?", "Heat-sensitive equipment, such as endoscopes."], ["What are disadvantages of ETO?", "It is slower and more costly."], ["What are advantages of hydrogen peroxide plasma?", "It is fast and leaves little residue."], ["What material is not compatible with hydrogen peroxide plasma?", "Cellulose."], ["What is ozone sterilization used for?", "Low-temperature sterilization, including stainless-steel items."], ["How is radiation sterilization used?", "Industrially with gamma rays or X-rays; it is not used in the radiation oncology facility for routine reprocessing."], ["What challenges come with chemical liquid sterilants?", "Selection, equipment compatibility, and safe disposal."], ["What are the three types of sterilization indicators?", "Mechanical, chemical, and biologic indicators."], ["What is the gold-standard sterilization indicator?", "A biologic indicator."], ["What does The Joint Commission require for sterilization quality control?", "Routine testing and documentation."]];
+const quizBank = [{"q": "Which precaution applies to every patient, regardless of diagnosis?", "choices": ["Transmission-based precautions", "Standard Precautions", "Protective isolation only", "Airborne precautions only"], "a": 1, "e": "Standard Precautions are used for all patients."}, {"q": "Standard Precautions apply to all of the following EXCEPT:", "choices": ["Blood", "Mucous membranes", "Sweat", "Nonintact skin"], "a": 2, "e": "The slide specifically excludes sweat."}, {"q": "What is the single most effective weapon against healthcare-associated infections?", "choices": ["Double gloving", "Hand hygiene", "Daily antibiotics", "Private rooms"], "a": 1, "e": "The professor slide calls hand hygiene the most crucial and effective weapon."}, {"q": "How long should soap-and-water handwashing last?", "choices": ["10–15 seconds", "20–30 seconds", "40–60 seconds", "90 seconds"], "a": 2, "e": "Soap and water: 40–60 seconds."}, {"q": "How long should alcohol-based hand rub be used?", "choices": ["5–10 seconds", "20–30 seconds", "40–60 seconds", "2 minutes"], "a": 1, "e": "Alcohol-based hand rub: 20–30 seconds."}, {"q": "When is alcohol-based hand rub appropriate?", "choices": ["Only after removing gloves", "When hands are not visibly dirty", "Only before eating", "When hands are covered with visible soil"], "a": 1, "e": "Use alcohol rub when hands are not visibly dirty."}, {"q": "Which fingernail condition follows the professor’s infection-control rule?", "choices": ["Long polished nails", "Artificial nails with clear polish", "Natural, unpolished, short nails", "Any nails if gloves are worn"], "a": 2, "e": "Nails should be natural, unpolished, short, and neat."}, {"q": "Which action is correct after removing gloves?", "choices": ["Touch the computer immediately", "Put on a second pair", "Perform hand hygiene", "Wash only if the gloves tore"], "a": 2, "e": "Gloves do not replace hand hygiene."}, {"q": "Why should gloves be changed between tasks on the same patient?", "choices": ["To improve grip", "To avoid cross-contamination", "To save supplies", "To prevent glove allergies"], "a": 1, "e": "Changing gloves prevents movement of pathogens from dirty to clean sites."}, {"q": "A face shield is mainly used to protect the:", "choices": ["Hands and wrists", "Eyes, nose, and mouth", "Feet and lower legs", "Hair only"], "a": 1, "e": "Face protection protects mucous membrane portals of entry."}, {"q": "Which statement about surgical masks and N95 respirators is correct?", "choices": ["They are identical", "A surgical mask is not a particulate respirator", "N95s are only eye protection", "Surgical masks sterilize inhaled air"], "a": 1, "e": "The slide warns not to confuse surgical masks with N95 respirators."}, {"q": "What should determine the gown material selected?", "choices": ["Patient age", "Expected fluid exposure", "Room temperature", "Treatment energy"], "a": 1, "e": "Choose cloth or plastic based on expected fluid exposure."}, {"q": "Before tattooing, the alcohol-prepared skin should be:", "choices": ["Wiped off with dry gauze immediately", "Allowed to dry completely", "Covered with lotion", "Touched to check temperature"], "a": 1, "e": "The alcohol must fully dry before tattooing."}, {"q": "Can an ink syringe be reused after changing the needle?", "choices": ["Yes, for the same patient", "Yes, if alcohol is added", "No, never", "Only during simulation"], "a": 2, "e": "Never reuse ink syringes, even if the needle is changed."}, {"q": "Where should a used tattoo needle go?", "choices": ["A tray until the procedure ends", "A red linen bag", "A sharps container at the point of use", "A regular trash can"], "a": 2, "e": "Dispose of it immediately in a sharps container at the point of use."}, {"q": "Which action with a used needle is prohibited?", "choices": ["Immediate disposal", "Using a sharps container", "Recapping it", "Keeping the tip away from the body"], "a": 2, "e": "Never recap or manipulate a used needle."}, {"q": "Which item must be reprocessed before reuse?", "choices": ["A reusable patient-care device", "A single-use syringe", "A disposable tissue", "A used glove"], "a": 0, "e": "Reusable equipment must be cleaned, disinfected, or reprocessed."}, {"q": "Which surface is part of environmental infection control in radiation therapy?", "choices": ["Only the waiting-room floor", "Treatment couch and frequently touched equipment", "Only the control-room ceiling", "Only outdoor surfaces"], "a": 1, "e": "Treatment couches, treatment equipment, and frequently touched surfaces require cleaning."}, {"q": "Blood-contaminated linen should be treated as:", "choices": ["Regular laundry", "Potentially infectious", "Sterile material", "Noncritical equipment"], "a": 1, "e": "Contaminated linen is potentially infectious."}, {"q": "Which device should be used instead of mouth-to-mouth resuscitation?", "choices": ["A reusable towel", "A resuscitation bag or mouthpiece", "A surgical drape", "An alcohol wipe"], "a": 1, "e": "Use resuscitation bags, mouthpieces, or ventilation devices."}, {"q": "A coughing patient entering the department should first be offered:", "choices": ["A sterile gown", "A mask", "Antibiotics", "A face shield only"], "a": 1, "e": "Offer masks to coughing patients."}, {"q": "A patient cannot follow cough etiquette. What is the best placement?", "choices": ["In the busiest waiting area", "At the treatment console", "In a private room or designated area", "Outside without evaluation"], "a": 2, "e": "Use a private room or designated area."}, {"q": "Before contacting OSHA about an unsafe condition, an HCW must first:", "choices": ["Inform the employer", "Contact the patient’s family", "Resign", "Call Workers’ Compensation"], "a": 0, "e": "The employer must first be informed of the unsafe condition."}, {"q": "Retaliation against an HCW for reporting an unsafe condition is:", "choices": ["Required", "Legal if no injury occurred", "Illegal", "Allowed during probation"], "a": 2, "e": "Retaliation is illegal."}, {"q": "After education proves the risk is minimal, continued refusal to care for a patient may result in:", "choices": ["Automatic promotion", "Termination", "A sterilization audit", "Workers’ Compensation"], "a": 1, "e": "The slide states refusal after education and minimal risk may lead to termination."}, {"q": "For Workers’ Compensation, an infection must be proven to be:", "choices": ["Community-acquired", "Work-acquired", "Genetic", "Present before employment"], "a": 1, "e": "It must be work-acquired and within the scope of practice."}, {"q": "Additional legal claims for a work infection generally require proof of:", "choices": ["A missed handwashing opportunity", "Intentional harm", "A patient complaint", "A positive culture only"], "a": 1, "e": "Additional claims are allowed only if intentional harm is proven."}, {"q": "Who should have access to a patient chart?", "choices": ["Any hospital employee", "Only staff directly involved in care", "All visitors", "Other patients"], "a": 1, "e": "Patient records are limited to those directly involved in care."}, {"q": "What is a major role of the Central Service Department?", "choices": ["Writing prescriptions", "Preparing, sterilizing, and distributing equipment", "Planning radiation dose", "Interpreting CT scans"], "a": 1, "e": "CSD manages equipment preparation, sterilization, and distribution."}, {"q": "Why is equipment reprocessing often centralized?", "choices": ["To eliminate documentation", "For efficiency and cost-effectiveness", "To avoid quality standards", "To allow reuse of all disposable items"], "a": 1, "e": "Centralization improves efficiency and cost-effectiveness."}, {"q": "Which organization’s quality standards apply to Central Service?", "choices": ["ARRT only", "The Joint Commission", "OSHA only", "FDA only"], "a": 1, "e": "The slide states CSD must meet TJC quality standards."}, {"q": "What is the first step for contaminated equipment?", "choices": ["Immediate packaging", "Pre-cleaning and decontamination", "Labeling as sterile", "Returning it to use"], "a": 1, "e": "Contaminated equipment is first pre-cleaned and decontaminated."}, {"q": "Why is a control number placed on reprocessed equipment?", "choices": ["To show its purchase price", "For traceability", "To identify the patient’s diagnosis", "To replace biologic testing"], "a": 1, "e": "The control number allows traceability."}, {"q": "A surgical instrument is classified as:", "choices": ["Critical", "Semicritical", "Noncritical", "Disposable only"], "a": 0, "e": "Critical items must be sterile."}, {"q": "An endoscope is classified as:", "choices": ["Critical in every situation", "Semicritical", "Noncritical", "Environmental equipment"], "a": 1, "e": "The slide gives endoscopes as semicritical items."}, {"q": "A blood pressure cuff is classified as:", "choices": ["Critical", "Semicritical", "Noncritical", "Sterile implant"], "a": 2, "e": "A BP cuff contacts intact skin and is noncritical."}, {"q": "Which process destroys all microbial life, including spores?", "choices": ["Cleaning", "Antisepsis", "Disinfection", "Sterilization"], "a": 3, "e": "Sterilization destroys all microbial life, including spores."}, {"q": "Antiseptics are used on:", "choices": ["Skin", "Treatment couches only", "Metal instruments only", "Biohazard waste"], "a": 0, "e": "Antiseptics are for skin, not inanimate objects."}, {"q": "What is the most common and reliable sterilization method?", "choices": ["Ozone", "Steam under pressure", "Dry wiping", "Ultraviolet room light"], "a": 1, "e": "Steam sterilization is the most common, cost-effective, and reliable."}, {"q": "Typical gravity-displacement steam sterilization uses:", "choices": ["121°C for about 15–30 minutes", "132°C for 4 minutes", "170°C for 10 minutes", "100°C for 2 hours"], "a": 0, "e": "Gravity displacement: about 121°C for 15–30 minutes."}, {"q": "Typical prevacuum steam sterilization uses:", "choices": ["121°C for 60 minutes", "132°C for 4 minutes", "150°C for 150 minutes", "170°C for 4 minutes"], "a": 1, "e": "Prevacuum: about 132°C for 4 minutes."}, {"q": "Which is a limitation of steam sterilization?", "choices": ["It cannot destroy microbes", "It may damage heat-sensitive items", "It leaves all spores alive", "It cannot be monitored"], "a": 1, "e": "Heat-sensitive items and corrosion are limitations."}, {"q": "Dry heat is best suited for:", "choices": ["Cellulose dressings", "Glassware, powders, and metal tools", "Living skin", "Plastic tubing only"], "a": 1, "e": "Dry heat is used for glassware, powders, and metal tools."}, {"q": "Incineration is mainly used for:", "choices": ["Skin antisepsis", "Biohazard waste", "Blood pressure cuffs", "Endoscopes"], "a": 1, "e": "Incineration is used for biohazard waste."}, {"q": "Which sterilant is used for heat-sensitive equipment such as endoscopes?", "choices": ["Ethylene oxide", "Soap and water", "Alcohol hand rub", "Steam only"], "a": 0, "e": "ETO is used for heat-sensitive equipment."}, {"q": "A disadvantage of ethylene oxide is that it is:", "choices": ["Too fast", "Slower and more costly", "Only for stainless steel", "Unable to sterilize"], "a": 1, "e": "ETO is slower and more costly."}, {"q": "Hydrogen peroxide plasma is NOT appropriate for:", "choices": ["Low-temperature processing", "Cellulose materials", "Fast processing", "Low-residue processing"], "a": 1, "e": "The slide states it is not for cellulose."}, {"q": "Radiation sterilization in this chapter is described as:", "choices": ["Routine in the treatment room", "Industrial use with gamma rays or X-rays", "A replacement for hand hygiene", "A method used on patient skin"], "a": 1, "e": "Radiation sterilization is industrial and not used routinely in the facility."}, {"q": "Which sterilization indicator is the gold standard?", "choices": ["Mechanical", "Chemical", "Biologic", "Visual inspection"], "a": 2, "e": "Biologic indicators are the gold standard."}, {"q": "What does TJC require for sterilization quality control?", "choices": ["Testing only after an outbreak", "Routine testing and documentation", "No records if equipment looks clean", "Only mechanical indicators"], "a": 1, "e": "Routine testing and documentation are required."}];
+let cards=[...flashcards], cardIndex=0;
+let quiz=[], qi=0, score=0, answered=false, wrong=[];
+
+document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(btn.dataset.tab).classList.add('active');
+}));
+
+const fc=document.getElementById('flashcard');
+fc.addEventListener('click',()=>fc.classList.toggle('flipped'));
+function renderCard(){
+  fc.classList.remove('flipped');
+  document.getElementById('fcQ').textContent=cards[cardIndex][0];
+  document.getElementById('fcA').textContent=cards[cardIndex][1];
+  document.getElementById('fcCount').textContent=`Card ${cardIndex+1} of ${cards.length}`;
+  document.getElementById('fcProgress').style.width=((cardIndex+1)/cards.length*100)+'%';
+}
+function nextCard(){cardIndex=(cardIndex+1)%cards.length;renderCard();}
+function prevCard(){cardIndex=(cardIndex-1+cards.length)%cards.length;renderCard();}
+function shuffleCards(){cards.sort(()=>Math.random()-.5);cardIndex=0;renderCard();}
+
+function shuffle(arr){return [...arr].sort(()=>Math.random()-.5)}
+function startQuiz(){
+  quiz=shuffle(quizBank).map(item=>{
+    const tagged=item.choices.map((c,i)=>({text:c,correct:i===item.a}));
+    return {q:item.q,e:item.e,choices:shuffle(tagged)};
+  });
+  qi=0;score=0;answered=false;wrong=[];renderQuestion();
+}
+function renderQuestion(){
+  const area=document.getElementById('quizArea');
+  if(qi>=quiz.length) return renderResults();
+  const item=quiz[qi];
+  area.innerHTML=`<div class="small">Question ${qi+1} of ${quiz.length} • Score: ${score}</div>
+  <div class="progress"><span style="width:${qi/quiz.length*100}%"></span></div>
+  <div class="quiz-card"><h2>${item.q}</h2>
+  <div id="choices">${item.choices.map((c,i)=>`<button class="choice" onclick="choose(${i})">${String.fromCharCode(65+i)}. ${c.text}</button>`).join('')}</div>
+  <div class="explain" id="explain"></div>
+  <div class="controls"><button class="btn primary" id="nextQ" style="display:none" onclick="nextQuestion()">Next Question →</button></div></div>`;
+}
+function choose(index){
+  if(answered)return; answered=true;
+  const item=quiz[qi], buttons=[...document.querySelectorAll('.choice')];
+  buttons.forEach((b,i)=>{
+    if(item.choices[i].correct)b.classList.add('correct');
+  });
+  if(item.choices[index].correct)score++;
+  else{buttons[index].classList.add('wrong');wrong.push(item.q)}
+  const ex=document.getElementById('explain');
+  ex.style.display='block';
+  ex.innerHTML=`<strong>${item.choices[index].correct?'Correct!':'Not quite.'}</strong> ${item.e}`;
+  document.getElementById('nextQ').style.display='inline-block';
+}
+function nextQuestion(){qi++;answered=false;renderQuestion();}
+function renderResults(){
+  const pct=Math.round(score/quiz.length*100);
+  document.getElementById('quizArea').innerHTML=`<div class="scorebox">
+  <h1>${pct}%</h1><h2>${score} / ${quiz.length} correct</h2>
+  <p>${pct>=90?'Excellent work!':pct>=75?'Good job. Review the missed topics once more.':'Review the study guide and try again.'}</p>
+  ${wrong.length?`<details><summary><strong>Questions to review (${wrong.length})</strong></summary><ul style="text-align:left">${wrong.map(x=>`<li>${x}</li>`).join('')}</ul></details>`:'<p>You did not miss any questions. 🎉</p>'}
+  <button class="btn primary" onclick="startQuiz()">Restart and Shuffle</button></div>`;
+}
+renderCard(); startQuiz();
+</script>
+</body>
+</html>
