@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#8d3158">
+  <title>Radiation Biology Master Quiz</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%238d3158'/%3E%3Ccircle cx='32' cy='32' r='7' fill='white'/%3E%3Cpath d='M29 7h6l4 15H25zM11 45l-3-5 11-11 7 12zM53 45l3-5-11-11-7 12z' fill='%23f7c8d8'/%3E%3C/svg%3E">
+  <style>
+    :root{--ink:#2d1d27;--muted:#705f69;--berry:#8d3158;--rose:#f8dce6;--petal:#fff6f9;--line:#ead4dc;--ok:#247653;--bad:#b23a48;--white:#fff}
+    *{box-sizing:border-box} body{margin:0;background:linear-gradient(145deg,#fff 0%,#fff7fa 45%,#fcecf2 100%);color:var(--ink);font:16px/1.55 ui-rounded,"SF Pro Rounded","Segoe UI",sans-serif;min-height:100vh}
+    button{font:inherit}.shell{width:min(900px,calc(100% - 28px));margin:28px auto 60px}.mast{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:20px}.eyebrow{color:var(--berry);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.82rem}.mast h1{font-family:Georgia,serif;font-size:clamp(2rem,5vw,3.5rem);line-height:1.02;margin:.3rem 0}.mast p{margin:0;color:var(--muted)}.pill{white-space:nowrap;background:var(--rose);padding:8px 13px;border-radius:999px;color:var(--berry);font-weight:800}.card{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:24px;box-shadow:0 18px 60px rgba(91,32,58,.10);padding:clamp(20px,4vw,38px)}
+    .progress-row{display:flex;gap:14px;align-items:center}.bar{height:10px;background:#f0e4e8;border-radius:99px;overflow:hidden;flex:1}.bar span{display:block;height:100%;background:linear-gradient(90deg,#b64b75,#7d294c);width:0;transition:width .25s}.count{color:var(--muted);font-weight:700}.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px}.topic,.source-badge{display:inline-block;border:1px solid var(--line);border-radius:10px;padding:5px 10px;font-weight:800;font-size:.88rem}.topic{background:var(--petal);color:var(--berry)}.source-badge{background:#f1edf8;color:#59477a}.question{font-family:Georgia,serif;font-size:clamp(1.35rem,3vw,2rem);line-height:1.25;margin:16px 0 22px}.question-image{display:block;width:min(100%,680px);max-height:520px;object-fit:contain;margin:0 auto 22px;border:1px solid var(--line);border-radius:16px;background:#fff}.hint{color:var(--muted);margin:-12px 0 18px}.options{display:grid;gap:12px}.option{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;border:1.5px solid var(--line);border-radius:16px;background:#fff;padding:15px 16px;color:var(--ink);cursor:pointer;transition:.15s}.option:hover{border-color:#c77b99;background:#fffafd;transform:translateY(-1px)}.option.selected{border-color:var(--berry);box-shadow:0 0 0 3px rgba(141,49,88,.12);background:#fff8fb}.letter{display:grid;place-items:center;min-width:30px;height:30px;border-radius:9px;background:var(--rose);color:var(--berry);font-weight:900}.controls{display:flex;justify-content:space-between;gap:12px;margin-top:26px}.btn{border:0;border-radius:13px;padding:12px 18px;font-weight:850;cursor:pointer}.btn.primary{background:var(--berry);color:white}.btn.secondary{background:#f2e8ec;color:var(--ink)}.btn:disabled{opacity:.45;cursor:not-allowed}.feedback{display:none;margin-top:18px;padding:15px;border-radius:14px}.feedback.show{display:block}.feedback.ok{background:#e9f6ef;color:#185a3e}.feedback.bad{background:#fff0f1;color:#8f2531}.hidden{display:none!important}.start{text-align:center}.start h2{font:700 clamp(1.6rem,4vw,2.4rem)/1.2 Georgia,serif}.start-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:26px 0}.mini{padding:15px;background:var(--petal);border:1px solid var(--line);border-radius:15px}.mini strong{display:block;color:var(--berry);font-size:1.25rem}.results h2{font:700 clamp(1.7rem,4vw,2.5rem)/1.15 Georgia,serif;margin-top:0}.score-ring{width:150px;height:150px;border-radius:50%;display:grid;place-items:center;margin:10px auto 24px;background:conic-gradient(var(--berry) var(--score),#f0e1e7 0);position:relative}.score-ring:after{content:"";position:absolute;inset:14px;background:white;border-radius:50%}.score-ring span{position:relative;z-index:1;font-size:1.8rem;font-weight:900}.review-item{border-top:1px solid var(--line);padding:18px 0}.review-item h3{font-size:1rem;margin:0 0 8px}.tag{display:inline-block;border-radius:999px;padding:3px 8px;font-size:.78rem;font-weight:850}.tag.good{background:#e9f6ef;color:#185a3e}.tag.miss{background:#fff0f1;color:#8f2531}.weak{background:var(--petal);border:1px solid var(--line);padding:18px;border-radius:16px;margin:18px 0}.weak ul{margin-bottom:0}@media(max-width:650px){.mast{display:block}.pill{display:inline-block;margin-top:12px}.start-grid{grid-template-columns:1fr}.controls{flex-wrap:wrap}.btn{flex:1}.shell{margin-top:16px}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="mast"><div><div class="eyebrow">Master Review</div><h1>Radiation Biology Quiz</h1><p>One question at a time. Full report at the end.</p></div><div class="pill">QA focused</div></header>
+    <section class="card start" id="start"><h2>Ready to practice everything?</h2><p>All questions are multiple choice. Some ask you to choose two or three answers.</p><div class="start-grid"><div class="mini"><strong id="totalPreview">3</strong>questions</div><div class="mini"><strong>Mixed</strong>answer positions</div><div class="mini"><strong>Full</strong>end report</div></div><button class="btn primary" id="startBtn">Start quiz</button></section>
+    <section class="card hidden" id="quiz"><div class="progress-row"><div class="bar"><span id="bar"></span></div><div class="count" id="count"></div></div><div class="meta-row"><div class="topic" id="topic"></div><div class="source-badge" id="sourceBadge"></div></div><h2 class="question" id="question"></h2><img class="question-image hidden" id="questionImage" alt="Radiation treatment room barrier diagram"><p class="hint" id="hint"></p><div class="options" id="options"></div><div class="feedback" id="feedback"></div><div class="controls"><button class="btn secondary" id="backBtn">Back</button><button class="btn primary" id="checkBtn" disabled>Check answer</button><button class="btn primary hidden" id="nextBtn">Next question</button></div></section>
+    <section class="card results hidden" id="results"></section>
+  </main>
+  <script>
+  const q=(topic,text,correct,wrong,why)=>({topic,q:text,correct:Array.isArray(correct)?correct:[correct],wrong,why,source:'Lecture question'});
+  const rawQuestions = [
+    q('History of X-rays','In what year were x-rays discovered?','1895',['1896','1901','1913'],'X-rays were discovered in 1895.'),
+    q('History of X-rays','Who discovered x-rays?','Wilhelm Conrad Röntgen',['Henri Becquerel','Marie Curie','Thomas Edison'],'Wilhelm Conrad Röntgen discovered x-rays.'),
+    q('Daily QA','What is the daily tolerance for gantry and collimator rotation?','1 degree',['0.5 degree','2 degrees','3 degrees'],'Daily gantry and collimator rotation tolerance is 1 degree.'),
+    q('Daily QA','What is the daily imaging and treatment coordinate coincidence tolerance for SRS/SBRT?','1 mm',['1.5 mm','2 mm','3 mm'],'SRS/SBRT uses the tighter 1 mm tolerance.'),
+    q('Daily QA','What is the daily imaging and treatment coordinate coincidence tolerance for non-SRS/SBRT?','2 mm',['1 mm','1.5 mm','3 mm'],'Non-SRS/SBRT coordinate coincidence tolerance is 2 mm.'),
+    q('Daily QA','What is the daily tolerance for collimator field size?','2 mm',['1 mm','1.5 mm','3 mm'],'Daily collimator field size tolerance is 2 mm.'),
+    q('Daily QA','What is the daily output tolerance for a linear accelerator?','3%',['1%','2%','5%'],'Daily linac output tolerance is 3%.'),
+    q('Daily QA','What is the daily tolerance for the optical distance indicator (ODI)?','2 mm',['1 mm','1.5 mm','3 mm'],'Daily ODI tolerance is 2 mm.'),
+    q('Daily QA','What is the daily general laser-alignment tolerance?','2 mm',['1 mm','1.5 mm','3 mm'],'General daily laser alignment tolerance is 2 mm.'),
+    q('Daily QA','What is the daily laser-alignment tolerance for IMRT?','1.5 mm',['1 mm','2 mm','3 mm'],'Daily IMRT laser alignment tolerance is 1.5 mm.'),
+    q('Daily QA','What is the daily laser-alignment tolerance for SRS?','1 mm',['1.5 mm','2 mm','3 mm'],'Daily SRS laser alignment tolerance is 1 mm.'),
+    q('Daily QA','A daily output reading is 1.20. What should the therapist do?','Notify physics that output is out of tolerance and do not treat.',['Continue treating because it is within tolerance.','Notify physics and continue treating.','Repeat the reading next month.'],'1.20 means 120%, which is far outside the 3% daily tolerance.'),
+    q('Daily QA','A 3% output tolerance corresponds to which acceptable range?','97% to 103%',['95% to 105%','98% to 102%','99% to 101%'],'A 3% tolerance around 100% gives 97% to 103%.'),
+    q('Daily QA','A QA dashboard value of 1.10 is equal to what percentage?','110%',['101%','105%','1000%'],'Move the decimal two places right: 1.10 = 110%.'),
+    q('Daily QA','How often are door interlocks, warning lights, and visual/audio communication checked?','Daily',['Weekly','Monthly','Yearly'],'These safety systems are checked daily.'),
+    q('Daily QA','How often is the radiation-off switch on the treatment console checked?','Daily',['Weekly','Monthly','Yearly'],'The console radiation-off switch is checked daily.'),
+    q('Daily QA','How often are imaging interlocks checked?','Daily',['Weekly','Monthly','Yearly'],'Imaging interlocks are checked daily.'),
+    q('Daily QA','How often are emergency power-off switches checked?','Monthly',['Daily','Weekly','Yearly'],'Emergency power-off switches are checked monthly.'),
+    q('Daily QA','How often are collision interlocks or laser guards checked?','Monthly',['Daily','Weekly','Yearly'],'Collision interlocks are checked monthly.'),
+    q('Daily QA','How often are electron applicator interlocks checked?','Yearly',['Daily','Weekly','Monthly'],'Electron applicator interlocks are checked yearly.'),
+
+    q('Dose conversion','1 rem equals which complete set of values?','1 rem = 1,000 mrem = 10 mSv = 0.01 Sv',['1 rem = 100 mrem = 1 mSv = 0.1 Sv','1 rem = 10,000 mrem = 100 mSv = 1 Sv','1 rem = 10 mrem = 0.1 mSv = 0.001 Sv'],'Use rem as home base: ×1,000 for mrem, ×10 for mSv, and ×0.01 for Sv.'),
+    q('Dose conversion','500 mrem equals which complete set of values?','500 mrem = 0.5 rem = 5 mSv = 0.005 Sv',['500 mrem = 5 rem = 50 mSv = 0.05 Sv','500 mrem = 0.05 rem = 0.5 mSv = 0.0005 Sv','500 mrem = 50 rem = 500 mSv = 0.5 Sv'],'Divide mrem by 1,000 to get rem: 500 mrem = 0.5 rem.'),
+    q('Dose conversion','5 mSv equals which complete set of values?','5 mSv = 0.5 rem = 500 mrem = 0.005 Sv',['5 mSv = 5 rem = 5,000 mrem = 0.05 Sv','5 mSv = 0.05 rem = 50 mrem = 0.5 Sv','5 mSv = 50 rem = 500 mrem = 5 Sv'],'Divide mSv by 10 to get rem.'),
+    q('Dose conversion','1 rem is equal to how many sievert?','0.01 Sv',['10 Sv','100 Sv','1,000 Sv'],'1 rem equals 0.01 Sv.'),
+    q('Dose conversion','150 mSv is equal to how many mrem?','15,000 mrem',['1,500 mrem','150,000 mrem','150 mrem'],'150 mSv = 15 rem, and 15 rem = 15,000 mrem.'),
+    q('Dose conversion','What is the cumulative occupational dose guideline for a radiation worker?','Age × 10 mSv',['Age × 1 mSv','Age × 50 mSv','Age × 100 mSv'],'The lecture gives cumulative dose as age multiplied by 10 mSv.'),
+    q('Dose conversion','What cumulative dose corresponds to a 90-year-old radiation worker?','900 mSv',['90 mSv','450 mSv','9,000 mSv'],'90 × 10 mSv = 900 mSv.'),
+    q('Dose limits','What is the annual dose limit for an occupational radiation worker?','50 mSv (5 rem)',['5 mSv (0.5 rem)','150 mSv (15 rem)','500 mSv (50 rem)'],'The annual occupational whole-body limit is 50 mSv, or 5 rem.'),
+    q('Dose limits','What is the occupational lens-of-the-eye dose limit listed in the course material?','150 mSv (15,000 mrem)',['15 mSv (1,500 mrem)','50 mSv (5,000 mrem)','500 mSv (50,000 mrem)'],'The listed occupational lens limit is 150 mSv.'),
+    q('Dose limits','What is the annual occupational limit for other organs?','500 mSv',['50 mSv','150 mSv','5,000 mSv'],'The course slide lists 500 mSv for other organs.'),
+    q('Dose limits','What is the negligible individual dose (NID) for the public?','0.01 mSv',['0.1 mSv','1 mSv','5 mSv'],'Public NID is 0.01 mSv.'),
+    q('Dose limits','What is the annual frequent-exposure limit for the public?','1 mSv',['0.01 mSv','5 mSv','50 mSv'],'The annual frequent public exposure limit is 1 mSv.'),
+    q('Dose limits','What is the annual infrequent-exposure limit for the public?','5 mSv',['0.5 mSv','1 mSv','50 mSv'],'The annual infrequent public exposure limit is 5 mSv.'),
+    q('Dose limits','What is the monthly embryo-fetus exposure limit?','0.5 mSv',['0.05 mSv','2 mSv','5 mSv'],'The monthly embryo-fetus limit is 0.5 mSv.'),
+    q('Dose limits','What is the embryo-fetus limit to the abdomen listed in the course material?','2 mSv',['0.5 mSv','5 mSv','15 mSv'],'The slide lists 2 mSv to the abdomen.'),
+    q('Dose limits','What is the annual embryo-fetus exposure limit?','5 mSv',['0.5 mSv','1 mSv','50 mSv'],'The annual embryo-fetus limit is 5 mSv.'),
+
+    q('Cell biology','What is the powerhouse of the cell?','Mitochondrion',['Nucleus','Lysosome','Golgi apparatus'],'The mitochondrion produces energy.'),
+    q('Cell biology','Where is DNA stored in the cell?','Nucleus',['Cytoplasm','Golgi apparatus','Smooth endoplasmic reticulum'],'DNA is stored in the nucleus.'),
+    q('Cell biology','In target theory, what is an ionization event in the sensitive target called?','A hit',['A break','A scatter','A repair'],'An ionization event in the target is called a hit.'),
+    q('Cell biology','Does RNA obey Chargaff’s rule?','No',['Yes, always','Only in mitosis','Only in G1'],'The course quiz marks this statement false.'),
+    q('Cell biology','Which nucleic acid is double-stranded?','DNA',['RNA','mRNA only','tRNA only'],'DNA is a double-stranded helix.'),
+    q('Cell biology','In DNA, adenine pairs with which base?','Thymine',['Uracil','Guanine','Cytosine'],'Chargaff’s rule: adenine pairs with thymine.'),
+    q('Cell biology','In DNA, guanine pairs with which base?','Cytosine',['Adenine','Thymine','Uracil'],'Chargaff’s rule: guanine pairs with cytosine.'),
+    q('Cell biology','Which base replaces thymine in RNA?','Uracil',['Cytosine','Guanine','Adenine'],'RNA uses uracil instead of thymine.'),
+    q('Cell biology','Which four classes are the major organic compounds?', 'Proteins, lipids, carbohydrates, and nucleic acids',['Proteins, phosphorus, nucleic acids, and lipids','Lipids, phosphorus, nucleic acids, and carbohydrates','Lipids, carbohydrates, carbon, and phosphorus'],'These are the four classes listed in the lecture.'),
+    q('Cell biology','What is the most abundant molecule in the body?','Water',['DNA','Protein','Lipids'],'Water makes up about 80% of human tissue in the course material.'),
+    q('Cell biology','Which category of cells transmits genetic information to future generations?','Germ cells',['Somatic cells','Epithelial cells','Squamous cells'],'Germ cells are reproductive cells.'),
+    q('Cell cycle','Which phase is most resistant to radiation?','S phase (synthesis)',['Mitosis','G2 phase','G1 phase'],'S phase is the most radioresistant.'),
+    q('Cell cycle','Which phase is most radiosensitive?','Mitosis',['S phase','G1 phase','G0 phase'],'Mitosis is the most radiosensitive phase.'),
+    q('Cell cycle','Which phase occurs between G1 and G2?','S phase (synthesis)',['Mitosis','G0 phase','Telophase'],'S phase lies between the two gap phases.'),
+    q('Cell cycle','What is the first phase of interphase?','G1 phase, when DNA is unreplicated',['S phase, when DNA is replicated','G2 phase, after mitosis','M phase, when DNA is unreplicated'],'G1 is the first interphase stage.'),
+    q('Cell cycle','Mitosis divides which type of cell?','Somatic or body cells',['Germ or sex cells','Only nerve cells','Only blood cells'],'Mitosis produces two identical somatic daughter cells.'),
+    q('Cell cycle','Meiosis divides which type of cell?','Germ or sex cells',['Somatic cells','Epithelial cells','Muscle cells'],'Meiosis occurs in germ cells.'),
+    q('Cell cycle','What happens during G0?','The cell rests in a quiescent state but may re-enter the cycle.',['DNA is duplicated immediately.','The cell divides into four daughter cells.','The cell is permanently dead.'],'G0 is a resting or quiescent state.'),
+
+    q('LET and RBE','Which is an example of high-LET radiation?','Alpha particles',['X-rays','Gamma rays','Visible light'],'Alpha particles are high LET.'),
+    q('LET and RBE','Which are examples of low-LET radiation?', ['X-rays','Gamma rays'],['Alpha particles','Protons','Neutrons','Heavy ions'],'X-rays and gamma rays are low LET.'),
+    q('LET and RBE','Which type of radiation has no mass or charge and travels long distances?','Low-LET electromagnetic radiation',['High-LET particulate radiation','Alpha particles only','Protons only'],'X-rays and gamma rays have no mass or charge and are low LET.'),
+    q('LET and RBE','Which type of radiation loses energy rapidly over a short distance?','High-LET particulate radiation',['Low-LET electromagnetic radiation','Visible light only','Radio waves only'],'High LET is densely ionizing and travels a short distance.'),
+    q('LET and RBE','Which type of radiation generally has the higher RBE?','High LET',['Low LET','Both always have RBE = 1','Neither has an RBE'],'High LET generally causes more biologic damage for the same dose.'),
+    q('LET and RBE','What does linear energy transfer (LET) measure?','Average energy deposited per unit path length',['Total absorbed dose in the whole body','Number of cells in mitosis','Time between fractions'],'LET is energy deposited per unit distance traveled.'),
+    q('LET and RBE','What does relative biological effectiveness (RBE) compare?','Doses of different radiations needed to produce the same biologic effect',['Distances needed to produce the same exposure','Only the energies of x-rays','The number of fractions in a plan'],'RBE compares different radiation types for the same biologic response.'),
+    q('LET and RBE','What reference radiation dose is used in the RBE formula in the lecture?','250 keV x-rays',['5 MeV alpha particles','1 keV electrons','Cobalt-60 gamma rays'],'The reference standard shown is 250 keV x-rays.'),
+    q('LET and RBE','As LET increases, what happens to RBE up to about 100 keV/µm?','RBE increases',['RBE decreases','RBE stays at zero','RBE becomes unrelated to LET'],'RBE rises with LET until the peak near 100 keV/µm.'),
+    q('LET and RBE','What describes the decrease in effectiveness beyond the RBE peak near 100 keV/µm?','Overkill effect',['Oxygen enhancement ratio','Target theory','Chargaff’s rule'],'Extra energy is wasted in an already lethally damaged area: the overkill effect.'),
+    q('LET and RBE','As LET increases, which set of changes occurs?','Ionization density, damage, and recovery time increase; survival decreases.',['Ionization density and damage decrease; survival increases.','Only survival increases.','Nothing changes biologically.'],'These trends are listed on the lecture slide.'),
+
+    q('Ionization','What is the difference between ionization and excitation?','Ionization ejects an electron; excitation raises its energy without ejecting it.',['Excitation ejects an electron; ionization only vibrates it.','Both always eject the nucleus.','They are identical processes.'],'Electron ejection distinguishes ionization from excitation.'),
+    q('Ionization','What percentage of radiation-induced damage is caused by indirect action?','70%',['15%','30%','100%'],'The lecture attributes 70% to indirect action.'),
+    q('Ionization','What percentage of radiation-induced damage is caused by direct action?','30%',['15%','70%','100%'],'The lecture attributes 30% to direct action.'),
+    q('Ionization','In indirect action, x-rays most commonly interact with what?','Water',['RNA','Protein','Salt'],'Water is the most abundant molecule and the main interaction target.'),
+    q('Ionization','What is radiolysis?','The splitting of a water molecule by radiation',['The repair of a DNA strand','The division of a somatic cell','The production of an x-ray at the target'],'Radiolysis is the radiation-induced splitting of water.'),
+    q('Ionization','What does radiolysis produce that can damage DNA?','Free radicals',['Chromosomes','Whole cells','Stable water only'],'Radiolysis produces unstable free radicals.'),
+    q('Ionization','Which two free radicals are formed during water radiolysis?', ['Hydrogen radical (H•)','Hydroxyl radical (OH•)'],['Hydrogen ion (H+)','Hydroxide ion (OH−)','Oxygen molecule (O₂)','Carbon radical (C•)'],'H• and OH• are the neutral free radicals shown in the lecture.'),
+    q('Ionization','Which free radical causes about two-thirds of free-radical cellular damage?','Hydroxyl radical (OH•)',['Hydrogen radical (H•)','Hydrogen ion (H+)','Hydroxide ion (OH−)'],'The lecture assigns about two-thirds of the damage to OH•.'),
+    q('Ionization','In direct ionization, what is struck directly?','The critical target, such as DNA',['Only water','Only the cell membrane','Only oxygen'],'Direct action deposits energy in the critical target itself.'),
+    q('Ionization','In radiation therapy with x-rays, which action is most common?','Indirect action through water radiolysis',['Direct action by alpha particles','Excitation without ionization only','No cellular interaction'],'Therapeutic x-rays mainly cause indirect action through water.'),
+    q('Ionization','What is an Auger electron?','A low-energy electron emitted when an inner-shell vacancy is filled and energy is transferred to another electron.',['A positron created during pair production.','A photon scattered from an outer-shell electron.','A neutron emitted above 10 MV.'],'An Auger electron is emitted by a nonradiative inner-shell relaxation process.'),
+
+    q('Interactions','Where are x-rays produced?','By electrons interacting outside the nucleus',['Only inside an excited nucleus','Only in water','Only during mitosis'],'The lecture contrasts x-rays from electron interactions with gamma rays from the nucleus.'),
+    q('Interactions','Where do gamma rays originate?','From an excited nucleus',['From electrons outside the nucleus','From water radiolysis','From a diode'],'Gamma rays are emitted by an excited nucleus.'),
+    q('Interactions','Which target interaction produces about 70%–80% of an x-ray tube output?','Bremsstrahlung',['Characteristic radiation','Coherent scattering','Pair production'],'Bremsstrahlung is the principal x-ray production interaction.'),
+    q('Interactions','In characteristic x-ray production, which electron is first ejected?','An inner-shell electron',['An outer-shell electron only','A free radical','A neutron'],'An inner-shell vacancy is created and then filled.'),
+    q('Interactions','Which tissue interaction occurs below about 10 keV and changes photon direction without ionization?','Coherent scattering',['Compton scattering','Photoelectric effect','Pair production'],'Coherent scattering causes excitation and a change in direction without ejection.'),
+    q('Interactions','Which interaction is most common in radiation therapy?','Compton scattering',['Coherent scattering','Photoelectric effect','Pair production'],'Compton scattering dominates the therapy energy range listed.'),
+    q('Interactions','Compton scattering interacts with which electron?','An outer-shell electron',['An inner K-shell electron','A nuclear proton','No electron'],'Compton involves an outer-shell electron.'),
+    q('Interactions','Which interaction is responsible for image fog?','Compton scattering',['Photoelectric effect','Pair production','Photodisintegration'],'Scattered Compton photons produce fog.'),
+    q('Interactions','Which interaction is most common in diagnostic imaging and produces contrast?','Photoelectric effect',['Compton scattering','Pair production','Photodisintegration'],'Photoelectric absorption is important for diagnostic contrast.'),
+    q('Interactions','Photoelectric absorption interacts with which electron?','An inner-shell electron',['An outer-shell electron','A free positron','A neutron'],'The photon is fully absorbed by an inner-shell electron.'),
+    q('Interactions','What always follows a photoelectric interaction according to the lecture?','A characteristic x-ray is produced.',['A neutron is produced.','Pair production begins.','No secondary radiation occurs.'],'An outer-shell electron fills the vacancy, producing characteristic radiation.'),
+    q('Interactions','What is the threshold energy for pair production?','Greater than 1.022 MeV',['Less than 10 keV','Greater than 3 MeV','Greater than 10 MV'],'Pair production requires more than 1.022 MeV.'),
+    q('Interactions','What pair is created during pair production?','An electron and a positron',['Two neutrons','Two protons','A proton and a neutron'],'The photon disappears and creates a negative electron and positive positron.'),
+    q('Interactions','What is the threshold for photodisintegration listed in the lecture?','Greater than 10 MV',['Greater than 1.022 MeV','Below 10 keV','Exactly 3 MeV'],'The lecture lists photodisintegration above 10 MV.'),
+    q('Interactions','What may be ejected from a nucleus during photodisintegration?','A proton, neutron, or alpha particle',['Only an outer-shell electron','Only a positron','Only a characteristic photon'],'Photodisintegration ejects a nuclear particle.'),
+
+    q('Detectors','What is inside an ionization chamber?','Gas',['Water','Lithium fluoride crystals','Film emulsion'],'Ion chambers are gas-filled detectors.'),
+    q('Detectors','Which thimble chamber is used to calibrate a linac?','Farmer chamber',['Cutie Pie','Geiger-Mueller counter','OSL badge'],'The Farmer chamber is a thimble chamber used for calibration.'),
+    q('Detectors','What type of instrument is a Cutie Pie?','Ionization chamber',['Geiger-Mueller detector','Thermoluminescent dosimeter','Diode'],'A Cutie Pie is a portable ionization chamber.'),
+    q('Detectors','What does a Cutie Pie measure?','Exposure in air',['Absorbed dose in tissue only','Activity in becquerels only','Photon energy only'],'The Cutie Pie measures exposure in air.'),
+    q('Detectors','Which factors should be considered when calibrating an ion chamber?', ['Temperature','Pressure','Volume'],['Humidity only','Patient age','Field color'],'The course lists temperature, pressure, and volume correction factors.'),
+    q('Detectors','Which detector is used to locate a lost radioactive source or an HDR source that fails to retract?','Geiger-Mueller detector',['Farmer chamber','TLD','Diode'],'A GM detector is sensitive and useful for finding a source.'),
+    q('Detectors','Which two are appropriate uses of a Geiger-Mueller counter?', ['Finding a lost radioactive source','Performing a shielding survey'],['Measuring absorbed dose in Gray','Determining photon energy','Calibrating a therapy beam','Prescribing treatment dose'],'The course quiz marks source finding and shielding survey as correct.'),
+    q('Detectors','Does a Geiger-Mueller counter provide quantitative dose information?','No; it indicates the presence of radiation.',['Yes; it precisely measures absorbed dose.','Yes; it calibrates the beam.','Only when worn as a badge.'],'The lecture says a GM detector detects presence but does not measure dose quantitatively.'),
+    q('Detectors','Which detector does not rely on gas?','Scintillation detector',['Ionization chamber','Geiger-Mueller counter','Proportional counter'],'Scintillation detectors use crystals such as sodium iodide.'),
+    q('Detectors','What is commonly used in a scintillation detector?','A sodium iodide crystal and photomultiplier tube',['Gas and a heating coil','Film and lead foil','Lithium fluoride only'],'The crystal creates light and the photomultiplier amplifies the signal.'),
+    q('Detectors','What are proportional counters typically used to detect?','Neutrons at energies of 10 MV or higher',['Visible light','Patient motion','Only diagnostic x-rays below 10 keV'],'The lecture links proportional counters with neutron detection above 10 MV.'),
+    q('Detectors','Which detector gives a real-time reading and can be used for patient dosimetry and daily QA?','Diode',['Film badge','OSL only','Pocket dosimeter only'],'Diodes are solid-state detectors used for in-vivo dosimetry and QA.'),
+    q('Detectors','Are diodes used to calibrate the treatment beam?','No',['Yes, always','Only for cobalt-60','Only once per year'],'The lecture specifically says diodes are not used for beam calibration.'),
+    q('Personnel monitoring','Which personal monitor is inexpensive but is being replaced?','Film badge',['OSL','Diode','Farmer chamber'],'Film badges are inexpensive older technology.'),
+    q('Personnel monitoring','Which personal monitor uses lithium fluoride and is read by heating?','TLD (thermoluminescent dosimeter)',['OSL','Film badge','Pocket ion chamber'],'TLD crystals release light when heated.'),
+    q('Personnel monitoring','How is an OSL badge read?','With laser light that produces blue light',['By heating it','By dissolving it in water','By placing it in a GM counter'],'OSL is stimulated by laser light.'),
+    q('Personnel monitoring','Which of film badge, TLD, and OSL is most common today?','OSL',['Film badge','TLD','All are equally common'],'The lecture identifies OSL as most common.'),
+    q('Personnel monitoring','When is personnel monitoring required?','When a worker may receive 10% of the annual effective dose equivalent',['Only after receiving 100% of the limit','Only for the public','Only during brachytherapy'],'The course lists the 10% threshold.'),
+
+    q('Radiation units','Which two units measure exposure?', ['Roentgen (R)','Coulomb per kilogram (C/kg)'],['Gray (Gy)','rad','Sievert (Sv)','rem'],'Exposure in air is measured in R or C/kg.'),
+    q('Radiation units','Which two units measure absorbed dose?', ['Gray (Gy)','rad'],['Roentgen (R)','Coulomb per kilogram (C/kg)','Sievert (Sv)','rem'],'Gray is SI and rad is the traditional absorbed-dose unit.'),
+    q('Radiation units','Which two units measure equivalent dose?', ['Sievert (Sv)','rem'],['Roentgen (R)','Coulomb per kilogram (C/kg)','Gray (Gy)','rad'],'Sievert is SI and rem is the traditional equivalent-dose unit.'),
+    q('Radiation units','Where is absorbed dose measured?','In human tissue',['Only in air','Only in the treatment console','Only in a radioactive source'],'Absorbed dose describes energy deposited in tissue.'),
+    q('Radiation units','What does equivalent dose consider that absorbed dose does not?','Radiation type and biological effect or tissue sensitivity',['Only room temperature','Only distance from source','Only patient age'],'Equivalent dose accounts for biological effect.'),
+    q('Radiation units','What does activity measure?','The rate of nuclear disintegration or decay',['Absorbed energy in tissue','Exposure in air','Distance from the source'],'Activity measures decay rate.'),
+    q('Radiation units','Which quantity must be measured below the 3 MeV threshold in the course material?','Exposure',['Absorbed dose','Equivalent dose','Activity'],'The course quiz associates the below-3-MeV threshold with exposure.'),
+    q('Radiation units','Which unit is used when prescribing radiation therapy dose?','Gray (Gy)',['Sievert (Sv)','Roentgen (R)','rem'],'Prescribed dose is absorbed dose, measured in Gy.'),
+    q('Radiation units','Which unit is commonly used for occupational and public equivalent dose?','Sievert (Sv)',['Gray (Gy)','Roentgen (R)','Coulomb per kilogram only'],'Equivalent dose uses sievert.'),
+
+    q('Radiation protection','What are the three principles of ALARA?', ['Time','Distance','Shielding'],['Dose','Exposure','Activity'],'ALARA is built on time, distance, and shielding.'),
+    q('Radiation protection','What is the largest source of natural radiation exposure?','Radon',['Cosmic rays','Medical x-rays','Food'],'The course review identifies radon.'),
+    q('Radiation protection','What is the second leading cause of lung cancer?','Radon',['CT imaging','Gamma cameras','Ultraviolet light'],'Radon is listed as the second leading cause.'),
+    q('Radiation protection','Which medical source contributes the most to medical x-ray exposure?','CT',['Dental x-rays','Mammography','Fluoroscopy alone'],'The review sheet identifies CT.'),
+    q('Radiation protection','Which agency regulates shipping radioactive materials?','Department of Transportation (DOT)',['Nuclear Regulatory Commission (NRC)','Food and Drug Administration (FDA)','National Council on Radiation Protection and Measurements (NCRP)'],'DOT regulates shipping.'),
+    q('Radiation protection','Which agency regulates radiation-producing machines?','Food and Drug Administration (FDA)',['Nuclear Regulatory Commission (NRC)','The Joint Commission','Department of Transportation (DOT)'],'The course quiz marks FDA.'),
+    q('Radiation protection','Which agency is identified in the quiz as most influential in radiation oncology?','National Council on Radiation Protection and Measurements (NCRP)',['Nuclear Regulatory Commission (NRC)','The Joint Commission','Food and Drug Administration (FDA)'],'The quiz marks NCRP.'),
+    q('Radiation protection','Which U.S. organization principally recommends radiation dose limits?','National Council on Radiation Protection and Measurements (NCRP)',['Nuclear Regulatory Commission (NRC)','Food and Drug Administration (FDA)','Department of Transportation (DOT)'],'NCRP recommends dose limits.'),
+    q('Radiation protection','Which U.S. organization is responsible for disposal of nuclear waste in the course quiz?','Nuclear Regulatory Commission (NRC)',['The Joint Commission','Food and Drug Administration (FDA)','National Council on Radiation Protection and Measurements (NCRP)'],'The quiz marks NRC.'),
+
+    q('Shielding','What is a primary barrier?','A barrier toward which the useful primary beam can be directed',['A barrier that receives only scatter and leakage','A patient immobilization device','A portable detector'],'Primary barriers intercept the useful beam.'),
+    q('Shielding','What does a secondary barrier absorb?','Scatter and leakage radiation',['The useful primary beam','Only electrons from the target','No radiation'],'Secondary barriers are not directed at by the useful beam.'),
+    {topic:'Shielding',q:'On the image, which letter indicates a secondary barrier?',correct:['C'],wrong:['A','B','D'],why:'The past quiz identifies C as the secondary barrier.',source:'Past quiz question',image:'assets/radiation_barriers.png'},
+    q('Shielding','What material is most common and economical for radiation therapy room shielding?','Concrete',['Plastic','Wood','Glass'],'Concrete is commonly used for high-energy therapy rooms.'),
+    q('Shielding','Who is allowed in a restricted area?','Occupationally exposed radiation workers, such as radiation therapists',['Any member of the public','Only waiting-room visitors','Anyone wearing an OSL'],'Restricted areas are for occupational workers.'),
+    q('Shielding','Is a patient waiting room a restricted area?','No',['Yes, always','Only during treatment','Only above 10 MV'],'A waiting room is an unrestricted public area.'),
+    q('Shielding','Which time frame is used when calculating shielding workload and dose?','Weekly',['Daily','Monthly','Yearly'],'Shielding calculations use weekly workload and dose.'),
+    q('Shielding','Which is the most important factor used to calculate shielding?','Weekly workload or beam-on time',['Monthly dose','Wall color','Patient height'],'The lecture calls workload the most important factor.'),
+    q('Shielding','Who designs treatment-room shielding?','A qualified medical or health physicist',['The patient','The receptionist','The equipment vendor alone'],'The lecture assigns shielding design to a qualified expert.'),
+
+    q('Inverse square law','A source measures 144 mR/hr at 1 meter. What is the rate at 3 meters?','16 mR/hr',['48 mR/hr','432 mR/hr','1,296 mR/hr'],'144 × (1²/3²) = 16 mR/hr.'),
+    q('Inverse square law','A source measures 100 mR/hr at 2 meters. At what distance will it measure 25 mR/hr?','4 meters',['0.5 meter','1 meter','8 meters'],'Reducing intensity to one-fourth requires doubling distance.'),
+    q('Inverse square law','A beam measures 3 mR/hr at 7 cm. What is the intensity at 3 cm?','16.3 mR/hr',['1.81 mR/hr','9 mR/hr','1.5 mR/hr'],'3 × (7²/3²) ≈ 16.3 mR/hr.'),
+    q('Inverse square law','A survey reads 80 mR/hr at 2 meters. What is the rate at 5 meters?','12.8 mR/hr',['32 mR/hr','200 mR/hr','500 mR/hr'],'80 × (2²/5²) = 12.8 mR/hr.'),
+
+    q('Clinical anatomy','When treating the esophagus, which structure in the same field is dose-limiting?','Spinal cord',['Heart','Stomach','Lung'],'The lecture question marks the spinal cord because it lies behind the esophagus.'),
+    q('Clinical anatomy','When treating the left breast tangentially, which two structures in the same field are dose-limiting?', ['Heart','Lung'],['Esophagus','Spinal cord'],'The lecture question marks the heart and lung.'),
+    q('Clinical anatomy','For a field containing liver, stomach, parotid, and bladder, which organ has the lowest TD 5/5?','Liver',['Parotid','Stomach','Bladder'],'Liver is dose-limiting because its TD 5/5 is 30 Gy, the lowest of these organs.'),
+    q('Clinical anatomy','For a field containing parotid, stomach, brain, and bladder, which organ has the lowest TD 5/5?','Parotid',['Brain','Stomach','Bladder'],'Parotid is dose-limiting because its TD 5/5 is 32 Gy, the lowest of these organs.'),
+    q('Clinical anatomy','For a field containing heart, brain, lung, and kidney, which organ has the lowest TD 5/5?','Lung',['Kidney','Heart','Brain'],'Lung is dose-limiting because its TD 5/5 is 17.5 Gy, the lowest of these organs.'),
+    q('Clinical anatomy','For a field containing liver, brain, heart, and kidney, which organ has the lowest TD 5/5?','Kidney',['Liver','Heart','Brain'],'Kidney is dose-limiting because its TD 5/5 is 23 Gy, the lowest of these organs.'),
+  ];
+
+  const td55=[
+    ['Lens of the eye','10 Gy','Cataracts'],['Lung','17.5 Gy','Pneumonitis'],['Kidney','23 Gy','Nephritis'],['Liver','30 Gy','Liver failure'],['Parotid','32 Gy','Xerostomia'],['Heart','40 Gy','Pericarditis'],['Small intestine','40 Gy','Obstruction or perforation'],['Brain','45 Gy','Necrosis or infarction'],['Spinal cord','47 Gy','Myelitis or necrosis'],['Stomach','50 Gy','Ulceration or perforation'],['Femoral head','52 Gy','Necrosis'],['Skin','55 Gy','Necrosis or ulceration'],['Rectum','60 Gy','Necrosis'],['Bladder','65 Gy','Proctitis, necrosis, fistula, or stenosis']
+  ];
+  const doses=td55.map(x=>x[1]);
+  const organs=td55.map(x=>x[0]);
+  const complications=td55.map(x=>x[2]);
+  td55.forEach((row,i)=>{
+    const [organ,dose,comp]=row;
+    const wrongDose=[...new Set(doses.filter(x=>x!==dose))].slice(i%5,i%5+3);
+    while(wrongDose.length<3) wrongDose.push(...[...new Set(doses.filter(x=>x!==dose&& !wrongDose.includes(x)))].slice(0,3-wrongDose.length));
+    rawQuestions.push(q('TD 5/5',`What is the TD 5/5 for the ${organ}?`,dose,wrongDose,`${organ}: ${dose}.`));
+    const wrongComp=[...new Set(complications.filter(x=>x!==comp))].slice((i+2)%6,(i+2)%6+3);
+    while(wrongComp.length<3) wrongComp.push(...[...new Set(complications.filter(x=>x!==comp&&!wrongComp.includes(x)))].slice(0,3-wrongComp.length));
+    rawQuestions.push(q('TD 5/5',`Which complication is paired with the ${organ} TD 5/5?`,comp,wrongComp,`${organ}: ${dose} — ${comp}.`));
+  });
+  const pastQuizPrompts=new Set([
+    'What is the annual dose limit for an occupational radiation worker?',
+    'What is the occupational lens-of-the-eye dose limit listed in the course material?',
+    'What are the three principles of ALARA?',
+    'A source measures 144 mR/hr at 1 meter. What is the rate at 3 meters?',
+    'A source measures 100 mR/hr at 2 meters. At what distance will it measure 25 mR/hr?',
+    'A beam measures 3 mR/hr at 7 cm. What is the intensity at 3 cm?',
+    'A survey reads 80 mR/hr at 2 meters. What is the rate at 5 meters?',
+    'Which two are appropriate uses of a Geiger-Mueller counter?',
+    'Which detector is used to locate a lost radioactive source or an HDR source that fails to retract?',
+    'Which personal monitor is inexpensive but is being replaced?',
+    'What type of instrument is a Cutie Pie?',
+    'What is a primary barrier?',
+    'What does a secondary barrier absorb?',
+    'Which time frame is used when calculating shielding workload and dose?',
+    'Which two units measure exposure?',
+    'Which two units measure absorbed dose?',
+    'Which two units measure equivalent dose?',
+    '1 rem is equal to how many sievert?',
+    'Which quantity must be measured below the 3 MeV threshold in the course material?',
+    'For a field containing heart, brain, lung, and kidney, which organ has the lowest TD 5/5?',
+    'For a field containing liver, brain, heart, and kidney, which organ has the lowest TD 5/5?',
+    'What is the TD 5/5 for the Lens of the eye?',
+    'What is the TD 5/5 for the Lung?',
+    'Which complication is paired with the Kidney TD 5/5?',
+    'What is the TD 5/5 for the Heart?'
+  ]);
+  rawQuestions.forEach(x=>{if(pastQuizPrompts.has(x.q))x.source='Past quiz question';});
+  </script>
+  <script>
+  const letters=['A','B','C','D','E','F'];
+  const questions=rawQuestions.map((x,i)=>{const all=[...x.wrong];const slot=i%Math.min(4,all.length+1);all.splice(slot,0,...x.correct);return {...x,options:all,answer:x.correct.map(v=>all.indexOf(v)),multi:x.correct.length};});
+  let current=0,answers=Array(questions.length).fill(null),checked=false;
+  const $=id=>document.getElementById(id);
+  $('totalPreview').textContent=questions.length;
+  function render(){checked=false;const x=questions[current];$('count').textContent=`${current+1} / ${questions.length}`;$('bar').style.width=`${(current/questions.length)*100}%`;$('topic').textContent=x.topic;$('sourceBadge').textContent=x.source;$('question').textContent=x.q;const qi=$('questionImage');if(x.image){qi.src=x.image;qi.classList.remove('hidden')}else{qi.removeAttribute('src');qi.classList.add('hidden')}$('hint').textContent=x.multi>1?`Choose ${x.multi} answers.`:'';$('options').innerHTML='';x.options.forEach((o,i)=>{const b=document.createElement('button');b.className='option'+((answers[current]||[]).includes(i)?' selected':'');b.innerHTML=`<span class="letter">${letters[i]}</span><span>${o}</span>`;b.onclick=()=>select(i);$('options').appendChild(b)});$('feedback').className='feedback';$('checkBtn').classList.remove('hidden');$('nextBtn').classList.add('hidden');$('checkBtn').disabled=!answers[current]||answers[current].length!==x.multi;$('backBtn').disabled=current===0;}
+  function select(i){if(checked)return;const x=questions[current];let a=answers[current]?[...answers[current]]:[];if(x.multi===1)a=[i];else a.includes(i)?a=a.filter(v=>v!==i):a.length<x.multi&&a.push(i);answers[current]=a;render();}
+  function same(a,b){return a&&a.length===b.length&&[...a].sort().every((v,i)=>v===[...b].sort()[i])}
+  $('checkBtn').onclick=()=>{checked=true;const x=questions[current],ok=same(answers[current],x.answer);$('feedback').className=`feedback show ${ok?'ok':'bad'}`;$('feedback').innerHTML=`<strong>${ok?'Correct!':'Not quite.'}</strong> ${x.why}`;$('checkBtn').classList.add('hidden');$('nextBtn').classList.remove('hidden');$('nextBtn').textContent=current===questions.length-1?'See full results':'Next question';};
+  $('nextBtn').onclick=()=>current===questions.length-1?showResults():(current++,render());$('backBtn').onclick=()=>{if(current>0){current--;render()}};
+  $('startBtn').onclick=()=>{$('start').classList.add('hidden');$('quiz').classList.remove('hidden');render()};
+  function showResults(){
+    const graded=questions.map((x,i)=>({x,i,ok:same(answers[i],x.answer)}));
+    const correct=graded.filter(r=>r.ok).length,pct=Math.round(correct/questions.length*100);
+    const misses=graded.filter(r=>!r.ok),counts={};misses.forEach(r=>counts[r.x.topic]=(counts[r.x.topic]||0)+1);
+    const weak=Object.entries(counts).sort((a,b)=>b[1]-a[1]);
+    const weakHtml=weak.length?`<div class="weak"><strong>What to work on</strong><ul>${weak.map(([t,n])=>`<li>${t}: ${n} missed</li>`).join('')}</ul></div>`:`<div class="weak"><strong>Excellent work.</strong> You did not miss any topics.</div>`;
+    const review=graded.map(({x,i,ok})=>{const chosen=(answers[i]||[]).map(v=>x.options[v]).join('; ')||'No answer';const right=x.correct.join('; ');return `<article class="review-item"><span class="tag ${ok?'good':'miss'}">${ok?'Correct':'Incorrect'}</span> <span class="tag">${x.source}</span><h3>${i+1}. ${x.q}</h3><div><strong>Your answer:</strong> ${chosen}</div>${ok?'':`<div><strong>Correct answer:</strong> ${right}</div>`}<div>${x.why}</div></article>`}).join('');
+    $('quiz').classList.add('hidden');$('results').classList.remove('hidden');
+    $('results').innerHTML=`<h2>Your full result</h2><div class="score-ring" style="--score:${pct*3.6}deg"><span>${pct}%</span></div><p><strong>${correct} correct</strong> out of ${questions.length}. You missed ${questions.length-correct}.</p>${weakHtml}<h2>Every answer</h2>${review}<button class="btn primary" onclick="location.reload()">Restart quiz</button>`;
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  </script>
+</body>
+</html>
