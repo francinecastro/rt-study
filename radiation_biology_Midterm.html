@@ -105,6 +105,8 @@
     q('Ionization','What is an Auger electron?','A low-energy electron emitted when an inner-shell vacancy is filled and energy is transferred to another electron.',['A positron created during pair production.','A photon scattered from an outer-shell electron.','A neutron emitted above 10 MV.'],'An Auger electron is emitted by a nonradiative inner-shell relaxation process.'),
 
     q('Interactions','Where are x-rays produced?','By electrons interacting outside the nucleus',['Only inside an excited nucleus','Only in water','Only during mitosis'],'The lecture contrasts x-rays from electron interactions with gamma rays from the nucleus.'),
+    q('X-ray tube','What happens at the cathode of the x-ray tube?','Electrons are released.',['X-rays interact with the patient.','Neutrons are produced.','Photoelectric absorption occurs.'],'The cathode releases electrons that travel toward the anode.'),
+    q('X-ray tube','Where are Bremsstrahlung and characteristic x-rays produced?','At the anode target',['At the cathode','Inside the patient','At the image receptor'],'Both types of x-rays are produced when electrons interact with the anode target.'),
     q('Interactions','Where do gamma rays originate?','From an excited nucleus',['From electrons outside the nucleus','From water radiolysis','From a diode'],'Gamma rays are emitted by an excited nucleus.'),
     q('Interactions','Which target interaction produces about 70%–80% of an x-ray tube output?','Bremsstrahlung',['Characteristic radiation','Coherent scattering','Pair production'],'Bremsstrahlung is the principal x-ray production interaction.'),
     q('Interactions','In characteristic x-ray production, which electron is first ejected?','An inner-shell electron',['An outer-shell electron only','A free radical','A neutron'],'An inner-shell vacancy is created and then filled.'),
@@ -246,7 +248,8 @@
   </script>
   <script>
   const letters=['A','B','C','D','E','F'];
-  const questions=rawQuestions.map((x,i)=>{const all=[...x.wrong];const slot=i%Math.min(4,all.length+1);all.splice(slot,0,...x.correct);return {...x,options:all,answer:x.correct.map(v=>all.indexOf(v)),multi:x.correct.length};});
+  function shuffle(list){const copy=[...list];for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]]}return copy}
+  const questions=shuffle(rawQuestions).map(x=>{const all=shuffle([...x.wrong,...x.correct]);return {...x,options:all,answer:x.correct.map(v=>all.indexOf(v)),multi:x.correct.length};});
   let current=0,answers=Array(questions.length).fill(null),checked=false;
   const $=id=>document.getElementById(id);
   $('totalPreview').textContent=questions.length;
