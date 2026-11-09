@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gantry Angle Playground</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: controls on top, big gantry circle beside a live readout (stacks on phones), then rules and quiz. */
+:root{
+  --bg:#FFF7F9; --card:#FFFFFF; --ink:#4A3B4E; --muted:#857590; --line:#EADFEF;
+  --pink:#E2678F; --pinkSoft:#FCE4EC; --mint:#2F9B7B; --mintSoft:#DDF4EC;
+  --lav:#8E74D0; --lavSoft:#EEE8FB; --gold:#D99A1E; --goldSoft:#FFF4D9;
+  --peach:#E0823A; --peachSoft:#FDEBDD; --body:#FFEDE6; --ring:#DCCFE6; --bad:#C8445F;
+  --qRAO:#9FDCC6; --qLAO:#F8C9A2; --qRPO:#CDBDF0; --qLPO:#F5B6CA;
+  --display:"Fredoka","Nunito",system-ui,sans-serif;
+  --text:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1E1823; --card:#2A2230; --ink:#F3EAF6; --muted:#B7A8C2; --line:#3E3347;
+  --pink:#F48FB1; --pinkSoft:#432736; --mint:#6FD3B0; --mintSoft:#1F3A33;
+  --lav:#B9A3F0; --lavSoft:#332A48; --gold:#F2C063; --goldSoft:#3D3220;
+  --peach:#F5A86B; --peachSoft:#3F2C1F; --body:#4A3A3D; --ring:#4A3E55; --bad:#FF8BA3;
+  --qRAO:#2E6656; --qLAO:#6E4A2E; --qRPO:#4C3F78; --qLPO:#6E3449; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1E1823; --card:#2A2230; --ink:#F3EAF6; --muted:#B7A8C2; --line:#3E3347;
+  --pink:#F48FB1; --pinkSoft:#432736; --mint:#6FD3B0; --mintSoft:#1F3A33;
+  --lav:#B9A3F0; --lavSoft:#332A48; --gold:#F2C063; --goldSoft:#3D3220;
+  --peach:#F5A86B; --peachSoft:#3F2C1F; --body:#4A3A3D; --ring:#4A3E55; --bad:#FF8BA3;
+  --qRAO:#2E6656; --qLAO:#6E4A2E; --qRPO:#4C3F78; --qLPO:#6E3449; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.5}
+.wrap{max-width:960px;margin:0 auto;padding-block:24px 48px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:grid;gap:18px}
+h1{font-family:var(--display);font-weight:600;font-size:2rem;line-height:1.15;margin:0;color:var(--pink);text-wrap:balance}
+h2{font-family:var(--display);font-weight:600;font-size:1.25rem;margin:0 0 10px;color:var(--lav)}
+.sub{margin:4px 0 0;color:var(--muted);max-width:64ch}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
+.controls{display:grid;gap:14px}
+.ctlrow{display:grid;gap:6px}
+.ctlrow > span{font-weight:700}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button,.btn{font:700 .92rem var(--text);border:1.5px solid var(--lav);background:transparent;color:var(--lav);border-radius:999px;padding:6px 13px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--lav);color:var(--card)}
+.btn.primary{background:var(--pink);border-color:var(--pink);color:var(--card)}
+button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.presets{display:flex;gap:6px;flex-wrap:wrap}
+.presets button{font:600 .85rem var(--text);border:1px solid var(--line);background:var(--lavSoft);color:var(--ink);border-radius:10px;padding:5px 10px;cursor:pointer}
+.main{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:760px){.main{grid-template-columns:1fr}}
+svg#dial{width:100%;max-width:460px;height:auto;display:block;margin:0 auto;touch-action:none;cursor:grab}
+.angleRow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.angleRow input[type=range]{flex:1 1 180px;accent-color:var(--pink);height:28px;min-width:0}
+.angleRow .nb{font:800 .9rem var(--text);border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:4px 9px;cursor:pointer}
+.readout{display:grid;gap:12px}
+.big{border-radius:16px;padding:14px 16px;background:var(--goldSoft)}
+.big .k{font-size:.78rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--gold)}
+.big .v{font-family:var(--display);font-size:2.4rem;font-weight:600;line-height:1.1}
+.big .d{color:var(--muted);font-size:.95rem}
+.why{display:grid;gap:4px;font-size:.95rem}
+.why b{color:var(--pink)}
+table{border-collapse:collapse;width:100%;font-size:.92rem;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
+th{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.rule{background:var(--lavSoft);border-radius:12px;padding:10px 12px;display:grid;gap:4px}
+.note{background:var(--peachSoft);border-radius:12px;padding:10px 12px;font-size:.92rem}
+.fb{margin-top:10px;font-weight:700}
+.fb .ok{color:var(--mint)} .fb .no{color:var(--bad)}
+.quizq{font-weight:700;font-size:1.05rem;margin:0 0 10px}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap}
+.flips{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.flip{border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.flip b{font-family:var(--display);font-size:1.1rem;color:var(--pink)}
+</style>
+<style>body{margin:0}</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <h1>Gantry Angle Playground</h1>
+    <p class="sub">Pick the machine and the patient position, then drag the gantry around the circle. The page tells you which field the beam makes. You are looking from the foot of the couch, like your class sketches.</p>
+  </header>
+
+  <section class="card controls" aria-label="Setup">
+    <div class="ctlrow"><span>Machine</span>
+      <div class="seg" role="group" aria-label="Machine">
+        <button id="mTB" aria-pressed="true">TrueBeam (0 on top)</button>
+        <button id="mTRI" aria-pressed="false">Trilogy (180 on top)</button>
+      </div></div>
+    <div class="ctlrow"><span>Patient position</span>
+      <div class="seg" role="group" aria-label="Position" id="posBtns"></div></div>
+    <div class="ctlrow"><span>Beam</span>
+      <div class="seg" role="group" aria-label="Beam type">
+        <button id="bMV" aria-pressed="true">MV treatment beam</button>
+        <button id="bKV" aria-pressed="false">kV imaging</button>
+      </div></div>
+    <div class="ctlrow"><span>Load a worksheet question</span>
+      <div class="presets" id="presets"></div></div>
+  </section>
+
+  <section class="main">
+    <div class="card">
+      <svg id="dial" viewBox="0 0 400 400" role="img" aria-label="Gantry circle around the patient">
+        <g id="wedges"></g>
+        <circle cx="200" cy="200" r="150" fill="none" stroke="var(--ring)" stroke-width="4"/>
+        <g id="ticks"></g>
+        <g id="patient"></g>
+        <g id="beam"></g>
+      </svg>
+      <div class="angleRow">
+        <button class="nb" data-d="-5" aria-label="Minus 5 degrees">−5</button>
+        <button class="nb" data-d="-1" aria-label="Minus 1 degree">−1</button>
+        <input type="range" id="ang" min="0" max="359" step="1" value="315" aria-label="Gantry angle">
+        <button class="nb" data-d="1" aria-label="Plus 1 degree">+1</button>
+        <button class="nb" data-d="5" aria-label="Plus 5 degrees">+5</button>
+      </div>
+      <div class="angleRow">
+        <span class="hint" style="font-weight:700">Jump to</span>
+        <button class="nb" data-g="0">0°</button><button class="nb" data-g="90">90°</button>
+        <button class="nb" data-g="180">180°</button><button class="nb" data-g="270">270°</button>
+      </div>
+    </div>
+
+    <div class="readout">
+      <div class="big">
+        <div class="k" id="bigK">Gantry 315°</div>
+        <div class="v" id="bigV">RAO</div>
+        <div class="d" id="bigD"></div>
+      </div>
+      <div class="card why" id="why"></div>
+      <div class="card">
+        <h2>All fields for this setup</h2>
+        <div style="overflow-x:auto"><table id="tbl"></table></div>
+      </div>
+      <div class="note" id="kvNote" hidden>The kV tube sits 90° away from the MV head, so the kV image runs along the gold line, not where the gantry points. Want a kV lateral? Put the gantry where the MV would shoot AP or PA. Want a kV AP or PA? Put the gantry at a side. On your worksheet Q6 and Q9 were both 0°, so your class counts a kV lateral at gantry 0 for right or left.</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>The flip trick</h2>
+    <div class="flips">
+      <div class="flip"><b>HFS</b><br>Front on top. Patient right sits at the 270 side.</div>
+      <div class="flip"><b>FFS</b><br>Front on top. Right and left swap. Right moves to the 90 side.</div>
+      <div class="flip"><b>HFP</b><br>Back on top. Right and left swap. Right moves to the 90 side.</div>
+      <div class="flip"><b>FFP</b><br>Back on top. Two swaps cancel, so right is back on the 270 side.</div>
+    </div>
+    <div class="rule" style="margin-top:12px">
+      <span>Both machines put 90 on the right of the circle and 270 on the left. Only top and bottom change. TrueBeam top is 0. Trilogy top is 180.</span>
+      <span>An oblique lives in the quarter between its two letters. RAO sits between A and R.</span>
+    </div>
+  </section>
+
+  <section class="card" aria-label="Quiz">
+    <h2>Quiz me</h2>
+    <p class="quizq" id="qText"></p>
+    <p class="hint" style="margin:0 0 10px;color:var(--muted)">The machine and position lock to the question. Drag the gantry to your answer, then check.</p>
+    <div class="btnrow">
+      <button class="btn primary" id="qCheck">Check my angle</button>
+      <button class="btn" id="qHint">Give me a hint</button>
+      <button class="btn" id="qNew">New question</button>
+      <button class="btn" id="qFree">Back to free play</button>
+    </div>
+    <div class="fb" id="qFb" aria-live="polite"></div>
+  </section>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const C=200, R=150;
+let machine="TB", pos="HFS", beam="MV", g=315, quiz=null;
+const POS={HFS:{ant:0,right:270,full:"head first supine"},FFS:{ant:0,right:90,full:"feet first supine"},
+           HFP:{ant:180,right:90,full:"head first prone"},FFP:{ant:180,right:270,full:"feet first prone"}};
+const QC={RAO:"var(--qRAO)",LAO:"var(--qLAO)",RPO:"var(--qRPO)",LPO:"var(--qLPO)"};
+const mod=a=>((a%360)+360)%360;
+// screen compass: top 0, right 90, bottom 180, left 270
+const toScreen=gg=>machine==="TB"?mod(gg):mod(180-gg);
+const toMachine=s=>machine==="TB"?mod(s):mod(180-s);
+const pt=(s,r)=>{const a=s*Math.PI/180;return[C+r*Math.sin(a),C-r*Math.cos(a)]};
+const diff=(a,b)=>{const d=mod(a-b);return d>180?360-d:d};
+const NS="http://www.w3.org/2000/svg";
+function el(tag,attrs,parent,text){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(text!=null)e.textContent=text;parent.appendChild(e);return e}
+
+function fieldAt(s){ // s = screen angle the beam comes FROM
+  const p=POS[pos], ant=p.ant, post=mod(ant+180), right=p.right, left=mod(right+180);
+  if(diff(s,ant)<0.5)return"AP"; if(diff(s,post)<0.5)return"PA";
+  if(diff(s,right)<0.5)return"RT LAT"; if(diff(s,left)<0.5)return"LT LAT";
+  return (diff(s,right)<90?"R":"L")+(diff(s,ant)<90?"A":"P")+"O";
+}
+const FULL={AP:"anterior posterior, the beam enters the front",PA:"posterior anterior, the beam enters the back",
+ "RT LAT":"right lateral, the beam enters the right side","LT LAT":"left lateral, the beam enters the left side",
+ RAO:"right anterior oblique, between the front and the right side",LAO:"left anterior oblique, between the front and the left side",
+ RPO:"right posterior oblique, between the back and the right side",LPO:"left posterior oblique, between the back and the left side"};
+
+function quadInfo(){
+  const p=POS[pos], ant=p.ant, post=mod(ant+180), right=p.right, left=mod(right+180);
+  const card={AP:ant,PA:post,"RT LAT":right,"LT LAT":left};
+  const quads={RAO:[ant,right],LAO:[ant,left],RPO:[post,right],LPO:[post,left]};
+  const range={};
+  for(const k in quads){const [a,b]=quads[k];let g1=toMachine(a),g2=toMachine(b);let lo=Math.min(g1,g2),hi=Math.max(g1,g2);
+    if(hi-lo>90){lo=hi;hi=360} range[k]=[lo,hi]}
+  return{card,quads,range};
+}
+
+function arcPath(s1,s2,r1,r2){ // s1->s2 clockwise on screen
+  const [x1,y1]=pt(s1,r2),[x2,y2]=pt(s2,r2),[x3,y3]=pt(s2,r1),[x4,y4]=pt(s1,r1);
+  return`M${x1} ${y1} A${r2} ${r2} 0 0 1 ${x2} ${y2} L${x3} ${y3} A${r1} ${r1} 0 0 0 ${x4} ${y4} Z`;
+}
+
+function drawStatic(){
+  const W=$("wedges");W.innerHTML="";const T=$("ticks");T.innerHTML="";const P=$("patient");P.innerHTML="";
+  const q=quadInfo();
+  for(const k in q.quads){let [a,b]=q.quads[k];let s1=a,s2=b;if(mod(b-a)>180){s1=b;s2=a}
+    el("path",{d:arcPath(s1,s1+90,112,148),fill:QC[k]},W);
+    const mid=s1+45;const [lx,ly]=pt(mid,130);
+    el("text",{x:lx,y:ly+5,"text-anchor":"middle","font-size":"14","font-weight":"800",fill:"var(--ink)","font-family":"Nunito"},W,k);
+    const [rx,ry]=pt(mid,172);const r=q.range[k];
+    el("text",{x:rx,y:ry+4,"text-anchor":"middle","font-size":"11","font-weight":"700",fill:"var(--muted)","font-family":"Nunito"},W,`${r[0]} to ${r[1]}`);
+  }
+  for(let s=0;s<360;s+=15){const big=s%90===0;const [x1,y1]=pt(s,150-(big?10:5)),[x2,y2]=pt(s,150);
+    el("line",{x1,y1,x2,y2,stroke:"var(--muted)","stroke-width":big?2:1},T)}
+  for(const s of [0,90,180,270]){const [x,y]=pt(s,188);
+    el("text",{x,y:y+6,"text-anchor":"middle","font-size":"17","font-weight":"800",fill:"var(--ink)","font-family":"Fredoka, Nunito"},T,toMachine(s)+"°")}
+  // patient
+  const p=POS[pos];const vertical=false;
+  el("ellipse",{cx:C,cy:C,rx:78,ry:50,fill:"var(--body)",stroke:"var(--ink)","stroke-width":2},P);
+  const [nx,ny]=pt(p.ant,52);el("circle",{cx:nx,cy:ny,r:10,fill:"var(--body)",stroke:"var(--ink)","stroke-width":2},P);
+  el("ellipse",{cx:C,cy:C,rx:77,ry:49,fill:"var(--body)"},P);
+  const lab=(s,r,t,c)=>{const [x,y]=pt(s,r);el("text",{x,y:y+6,"text-anchor":"middle","font-size":"17","font-weight":"800",fill:c,"font-family":"Nunito"},P,t)};
+  lab(p.ant,30,"A","var(--pink)");lab(mod(p.ant+180),30,"P","var(--lav)");
+  lab(p.right,58,"R","var(--mint)");lab(mod(p.right+180),58,"L","var(--peach)");
+  el("text",{x:C,y:C+5,"text-anchor":"middle","font-size":"11","font-weight":"700",fill:"var(--muted)","font-family":"Nunito"},P,pos);
+  // table
+  const rows=[["AP",q.card.AP],["PA",q.card.PA],["RT LAT",q.card["RT LAT"]],["LT LAT",q.card["LT LAT"]]];
+  let h="<tr><th>Field</th><th>Gantry angle</th></tr>";
+  rows.forEach(([n,s])=>h+=`<tr><td><b>${n}</b></td><td>exactly ${toMachine(s)}°</td></tr>`);
+  ["RAO","LAO","RPO","LPO"].forEach(k=>{const r=q.range[k];h+=`<tr><td><span class="dot" style="background:${QC[k]}"></span><b>${k}</b></td><td>between ${r[0]}° and ${r[1]}°</td></tr>`});
+  $("tbl").innerHTML=h;
+}
+
+function drawBeam(){
+  const B=$("beam");B.innerHTML="";const s=toScreen(g);
+  const [hx,hy]=pt(s,150);
+  const head=el("g",{transform:`rotate(${s} ${C} ${C})`},B);
+  el("rect",{x:C-26,y:C-150-16,width:52,height:30,rx:9,fill:"var(--pink)",stroke:"var(--card)","stroke-width":3},head);
+  el("text",{x:C,y:C-145,"text-anchor":"middle","font-size":"12","font-weight":"800",fill:"var(--card)","font-family":"Nunito"},head,"MV");
+  if(beam==="MV"){
+    const [ax,ay]=pt(s,132),[bx,by]=pt(s,58);
+    el("line",{x1:ax,y1:ay,x2:bx,y2:by,stroke:"var(--gold)","stroke-width":6,"stroke-linecap":"round"},B);
+    const [t1x,t1y]=pt(s+8,70),[t2x,t2y]=pt(s-8,70),[tx,ty]=pt(s,52);
+    el("polygon",{points:`${t1x},${t1y} ${t2x},${t2y} ${tx},${ty}`,fill:"var(--gold)"},B);
+  }else{
+    const ks=mod(s+90);
+    const kv=el("g",{transform:`rotate(${ks} ${C} ${C})`},B);
+    el("rect",{x:C-20,y:C-150-14,width:40,height:26,rx:7,fill:"var(--gold)",stroke:"var(--card)","stroke-width":3},kv);
+    el("text",{x:C,y:C-146,"text-anchor":"middle","font-size":"11","font-weight":"800",fill:"var(--card)","font-family":"Nunito"},kv,"kV");
+    const [ax,ay]=pt(ks,128),[bx,by]=pt(mod(ks+180),128);
+    el("line",{x1:ax,y1:ay,x2:bx,y2:by,stroke:"var(--gold)","stroke-width":6,"stroke-linecap":"round",opacity:.85},B);
+  }
+}
+
+function readout(){
+  const s=toScreen(g);
+  $("bigK").textContent=`${machine==="TB"?"TrueBeam":"Trilogy"} · ${pos} · gantry ${g}°`;
+  const p=POS[pos];
+  if(beam==="MV"){
+    const f=fieldAt(s);$("bigV").textContent=f;$("bigD").textContent=FULL[f];
+    const side=d=>{const n=fieldAt(d);return n};
+    const near=[["front (A)",p.ant],["back (P)",mod(p.ant+180)],["right (R)",p.right],["left (L)",mod(p.right+180)]]
+      .map(([n,a])=>[n,toMachine(a),diff(s,a)]).sort((a,b)=>a[2]-b[2]);
+    $("why").innerHTML=`<span>For <b>${pos}</b> (${p.full}) on <b>${machine==="TB"?"TrueBeam":"Trilogy"}</b>, the front is at <b>${toMachine(p.ant)}°</b> and the patient's right is at <b>${toMachine(p.right)}°</b>.</span>`+
+      (near[0][2]<0.5?`<span>The gantry sits exactly on the ${near[0][0]} at ${near[0][1]}°, so it is a straight field.</span>`
+       :`<span>The gantry at ${g}° sits between the ${near[0][0]} at ${near[0][1]}° and the ${near[1][0]} at ${near[1][1]}°. Those two letters make the name.</span>`);
+  }else{
+    const ks=mod(s+90);const f=fieldAt(ks);const axis=(f==="RT LAT"||f==="LT LAT")?"kV lateral":(f==="AP"||f==="PA")?"kV AP / PA":"kV oblique";
+    $("bigV").textContent=axis;
+    $("bigD").textContent=axis==="kV oblique"?"The kV line is not straight. Move the gantry to 0, 90, 180 or 270.":`The kV line runs ${axis==="kV lateral"?"from side to side":"from front to back"} through the patient.`;
+    $("why").innerHTML=`<span>MV head points from <b>${fieldAt(s)}</b>. The kV tube is 90° away, so the picture is taken along the gold line.</span><span>Same gantry, two beams. That is why kV answers look “wrong” if you think like MV.</span>`;
+  }
+  $("kvNote").hidden=beam!=="kV";
+}
+
+function render(){ $("ang").value=g; drawStatic(); drawBeam(); readout(); }
+
+// controls
+function setMachine(m){if(quiz&&quiz.lock)return;machine=m;$("mTB").setAttribute("aria-pressed",m==="TB");$("mTRI").setAttribute("aria-pressed",m==="TRI");render()}
+$("mTB").onclick=()=>setMachine("TB");$("mTRI").onclick=()=>setMachine("TRI");
+["HFS","HFP","FFS","FFP"].forEach(k=>{const b=document.createElement("button");b.textContent=k;b.id="p"+k;b.setAttribute("aria-pressed",k===pos);
+  b.onclick=()=>{if(quiz&&quiz.lock)return;pos=k;syncPos();render()};$("posBtns").appendChild(b)});
+function syncPos(){["HFS","HFP","FFS","FFP"].forEach(k=>$("p"+k).setAttribute("aria-pressed",k===pos))}
+function setBeam(b){if(quiz&&quiz.lock)return;beam=b;$("bMV").setAttribute("aria-pressed",b==="MV");$("bKV").setAttribute("aria-pressed",b==="kV");render()}
+$("bMV").onclick=()=>setBeam("MV");$("bKV").onclick=()=>setBeam("kV");
+$("ang").addEventListener("input",e=>{g=+e.target.value;drawBeam();readout()});
+document.querySelectorAll(".nb").forEach(b=>b.onclick=()=>{if(b.dataset.g!=null)g=+b.dataset.g;else g=mod(g+ +b.dataset.d);$("ang").value=g;drawBeam();readout()});
+
+// drag on dial
+const svg=$("dial");let dragging=false;
+function fromEvent(e){const m=svg.getScreenCTM().inverse();const p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;const q=p.matrixTransform(m);
+  const s=mod(Math.atan2(q.x-C,-(q.y-C))*180/Math.PI);g=Math.round(toMachine(s));g=mod(g);$("ang").value=g;drawBeam();readout()}
+svg.addEventListener("pointerdown",e=>{dragging=true;svg.setPointerCapture(e.pointerId);fromEvent(e)});
+svg.addEventListener("pointermove",e=>{if(dragging)fromEvent(e)});
+svg.addEventListener("pointerup",()=>dragging=false);svg.addEventListener("pointercancel",()=>dragging=false);
+
+// worksheet presets
+const WS=[
+ {t:"Q1",m:"TB",p:"HFS",b:"MV",g:280,note:"Q1 TrueBeam HFS RAO. Your 280° is an RAO ✓"},
+ {t:"Q2",m:"TRI",p:"HFP",b:"MV",g:100,note:"Q2 Trilogy HFP RPO. Your 100° is an RPO ✓"},
+ {t:"Q3",m:"TB",p:"FFS",b:"MV",g:80,note:"Q3 TrueBeam FFS RAO. Your 80° is an RAO ✓"},
+ {t:"Q4",m:"TRI",p:"HFP",b:"MV",g:200,note:"Q4 Trilogy HFP LAO. Look, 200° lands in LPO. Drag to about 330° to see LAO."},
+ {t:"Q5",m:"TRI",p:"FFP",b:"MV",g:100,note:"Q5 Trilogy FFP LPO. Your 100° is an LPO ✓"},
+ {t:"Q6",m:"TB",p:"FFS",b:"kV",g:0,note:"Q6 TrueBeam FFS RT LAT kV. Gantry 0° gives a kV lateral ✓ (MV right lateral would be 90°)"},
+ {t:"Q7",m:"TRI",p:"FFP",b:"kV",g:90,note:"Q7 Trilogy FFP PA kV. Gantry 90° gives a kV front to back picture ✓"},
+ {t:"Q8",m:"TRI",p:"HFS",b:"MV",g:270,note:"Q8 Trilogy HFS RT LAT MV. 270° ✓"},
+ {t:"Q9",m:"TB",p:"FFS",b:"kV",g:0,note:"Q9 TrueBeam FFS LT LAT kV. Gantry 0° gives a kV lateral ✓"}];
+WS.forEach(w=>{const b=document.createElement("button");b.textContent=w.t;b.onclick=()=>{endQuiz();
+  machine=w.m;pos=w.p;beam=w.b;g=w.g;$("mTB").setAttribute("aria-pressed",machine==="TB");$("mTRI").setAttribute("aria-pressed",machine==="TRI");
+  $("bMV").setAttribute("aria-pressed",beam==="MV");$("bKV").setAttribute("aria-pressed",beam==="kV");syncPos();render();
+  $("qFb").innerHTML=`<span class="ok">${w.note}</span>`;$("qText").textContent="Worksheet question loaded above. Press New question to quiz yourself.";};$("presets").appendChild(b)});
+
+// quiz
+const TARGETS=["RAO","LAO","RPO","LPO","RAO","LAO","RPO","LPO","AP","PA","RT LAT","LT LAT"];
+function newQ(){
+  machine=Math.random()<.5?"TB":"TRI";pos=["HFS","HFP","FFS","FFP"][Math.floor(Math.random()*4)];beam="MV";
+  const t=TARGETS[Math.floor(Math.random()*TARGETS.length)];quiz={t,lock:true,hint:0};
+  $("mTB").setAttribute("aria-pressed",machine==="TB");$("mTRI").setAttribute("aria-pressed",machine==="TRI");
+  $("bMV").setAttribute("aria-pressed",true);$("bKV").setAttribute("aria-pressed",false);syncPos();
+  $("qFb").innerHTML="";
+  $("qText").textContent=`On a ${machine==="TB"?"TrueBeam":"Trilogy"}, the patient is ${POS[pos].full} (${pos}). Set the gantry for ${/LAT|AP|PA/.test(t)?"a":"an"} ${t}.`;
+  hideAnswers(true);render();
+}
+function hideAnswers(h){$("wedges").style.visibility=h?"hidden":"visible";
+  document.querySelectorAll("#tbl, .big, #why").forEach(e=>e.style.visibility=h?"hidden":"visible")}
+const _render=render;render=function(){_render();if(quiz&&quiz.lock)hideAnswers(true)};
+function endQuiz(){quiz=null;hideAnswers(false)}
+$("qCheck").onclick=()=>{if(!quiz){$("qFb").innerHTML='<span class="no">Press New question first.</span>';return}
+  const f=fieldAt(toScreen(g));
+  if(f===quiz.t){$("qFb").innerHTML=`<span class="ok">Yes! ${g}° is ${quiz.t === "AP"||quiz.t==="PA"?"the":"an"} ${quiz.t} for ${pos} on ${machine==="TB"?"TrueBeam":"Trilogy"}.</span>`;hideAnswers(false);quiz.lock=false}
+  else $("qFb").innerHTML=`<span class="no">Not yet. ${g}° makes ${f}. Try again or ask for a hint.</span>`};
+$("qHint").onclick=()=>{if(!quiz)return;const p=POS[pos];quiz.hint++;
+  if(quiz.hint===1)$("qFb").innerHTML=`<span class="no">Hint. On this machine the front is at ${toMachine(p.ant)}° and the patient's right is at ${toMachine(p.right)}°.</span>`;
+  else{hideAnswers(false);$("qFb").innerHTML=`<span class="no">Here are the colors. Find ${quiz.t} and drag the gantry into it.</span>`}};
+$("qNew").onclick=newQ;
+$("qFree").onclick=()=>{endQuiz();$("qFb").innerHTML="";$("qText").textContent="Free play. Press New question when you want a quiz.";render()};
+
+render();$("qText").textContent="Press New question to get a random machine, position and field.";
+</script>
+
+</body>
+</html>
