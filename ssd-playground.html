@@ -94,16 +94,16 @@ ol.steps{margin:0;padding-left:22px;display:grid;gap:4px;font-variant-numeric:ta
       </div>
     </div>
     <div class="row">
-      <label for="sep">Patient thickness (separation) <output id="sepOut">34 cm</output></label>
-      <input type="range" id="sep" min="16" max="50" step="0.5" value="34">
+      <label for="sep">Patient thickness (separation) <output id="sepOut">38 cm</output></label>
+      <input type="range" id="sep" min="16" max="50" step="0.5" value="38">
     </div>
     <div class="row">
-      <label for="shift">Move the ISO <output id="shiftOut">2.5 cm toward posterior</output></label>
-      <input type="range" id="shift" min="-10" max="10" step="0.1" value="2.5">
+      <label for="shift">Move the ISO <output id="shiftOut">3.5 cm toward posterior</output></label>
+      <input type="range" id="shift" min="-10" max="10" step="0.1" value="3.5">
       <span class="hint" id="shiftHint">Left on the slider = toward anterior. Right = toward posterior. Middle = midplane.</span>
     </div>
     <div class="row">
-      <span style="font-weight:700">Load a worksheet problem</span>
+      <span style="font-weight:700">Load a practice problem</span>
       <div class="presets" id="presets"></div>
     </div>
   </section>
@@ -172,9 +172,9 @@ const names=()=>mode==="AP"
   :{a:"RIGHT",b:"LEFT",sa:"right",sb:"left",fa:"RT LAT",fb:"LT LAT",ka:"right",kb:"left"};
 
 const presets=[
- {t:"Q1",m:"AP",sep:28,sh:0},{t:"Q2",m:"AP",sep:34,sh:2.5},{t:"Q3",m:"AP",sep:30,sh:-4.2},
- {t:"Q4",m:"AP",sep:29,sh:0},{t:"Q5",m:"LAT",sep:45,sh:7},{t:"Q6",m:"AP",sep:37.5,sh:-8.3},
- {t:"Q7",m:"AP",sep:22,sh:2.7},{t:"Slide 13",m:"AP",sep:26,sh:1}];
+ {t:"P1",m:"AP",sep:32,sh:0},{t:"P2",m:"AP",sep:36,sh:3},{t:"P3",m:"AP",sep:26,sh:-2.4},
+ {t:"P4",m:"LAT",sep:40,sh:-5},{t:"P5",m:"AP",sep:24,sh:1.8},{t:"P6",m:"LAT",sep:42,sh:6.5},
+ {t:"P7",m:"AP",sep:33,sh:-5.6},{t:"P8",m:"AP",sep:27,sh:0}];
 presets.forEach(p=>{const b=document.createElement("button");b.textContent=p.t;
   b.onclick=()=>{setMode(p.m);$("sep").value=p.sep;$("shift").value=p.sh;draw()};$("presets").appendChild(b)});
 

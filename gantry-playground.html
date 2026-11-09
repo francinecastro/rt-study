@@ -98,7 +98,7 @@ th{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mu
         <button id="bMV" aria-pressed="true">MV treatment beam</button>
         <button id="bKV" aria-pressed="false">kV imaging</button>
       </div></div>
-    <div class="ctlrow"><span>Load a worksheet question</span>
+    <div class="ctlrow"><span>Practice questions (each one starts a quiz)</span>
       <div class="presets" id="presets"></div></div>
   </section>
 
@@ -136,7 +136,7 @@ th{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mu
         <h2>All fields for this setup</h2>
         <div style="overflow-x:auto"><table id="tbl"></table></div>
       </div>
-      <div class="note" id="kvNote" hidden>The kV tube sits 90° away from the MV head, so the kV image runs along the gold line, not where the gantry points. Want a kV lateral? Put the gantry where the MV would shoot AP or PA. Want a kV AP or PA? Put the gantry at a side. On your worksheet Q6 and Q9 were both 0°, so your class counts a kV lateral at gantry 0 for right or left.</div>
+      <div class="note" id="kvNote" hidden>The kV tube sits 90° away from the MV head, so the kV image runs along the gold line, not where the gantry points. Want a kV lateral? Put the gantry where the MV would shoot AP or PA. Want a kV AP or PA? Put the gantry at a side. In class, a kV lateral counts for right or left, so gantry 0 or 180 both work on TrueBeam.</div>
     </div>
   </section>
 
@@ -304,48 +304,44 @@ svg.addEventListener("pointerdown",e=>{dragging=true;svg.setPointerCapture(e.poi
 svg.addEventListener("pointermove",e=>{if(dragging)fromEvent(e)});
 svg.addEventListener("pointerup",()=>dragging=false);svg.addEventListener("pointercancel",()=>dragging=false);
 
-// worksheet presets
-const WS=[
- {t:"Q1",m:"TB",p:"HFS",b:"MV",g:280,note:"Q1 TrueBeam HFS RAO. Your 280° is an RAO ✓"},
- {t:"Q2",m:"TRI",p:"HFP",b:"MV",g:100,note:"Q2 Trilogy HFP RPO. Your 100° is an RPO ✓"},
- {t:"Q3",m:"TB",p:"FFS",b:"MV",g:80,note:"Q3 TrueBeam FFS RAO. Your 80° is an RAO ✓"},
- {t:"Q4",m:"TRI",p:"HFP",b:"MV",g:200,note:"Q4 Trilogy HFP LAO. Look, 200° lands in LPO. Drag to about 330° to see LAO."},
- {t:"Q5",m:"TRI",p:"FFP",b:"MV",g:100,note:"Q5 Trilogy FFP LPO. Your 100° is an LPO ✓"},
- {t:"Q6",m:"TB",p:"FFS",b:"kV",g:0,note:"Q6 TrueBeam FFS RT LAT kV. Gantry 0° gives a kV lateral ✓ (MV right lateral would be 90°)"},
- {t:"Q7",m:"TRI",p:"FFP",b:"kV",g:90,note:"Q7 Trilogy FFP PA kV. Gantry 90° gives a kV front to back picture ✓"},
- {t:"Q8",m:"TRI",p:"HFS",b:"MV",g:270,note:"Q8 Trilogy HFS RT LAT MV. 270° ✓"},
- {t:"Q9",m:"TB",p:"FFS",b:"kV",g:0,note:"Q9 TrueBeam FFS LT LAT kV. Gantry 0° gives a kV lateral ✓"}];
-WS.forEach(w=>{const b=document.createElement("button");b.textContent=w.t;b.onclick=()=>{endQuiz();
-  machine=w.m;pos=w.p;beam=w.b;g=w.g;$("mTB").setAttribute("aria-pressed",machine==="TB");$("mTRI").setAttribute("aria-pressed",machine==="TRI");
-  $("bMV").setAttribute("aria-pressed",beam==="MV");$("bKV").setAttribute("aria-pressed",beam==="kV");syncPos();render();
-  $("qFb").innerHTML=`<span class="ok">${w.note}</span>`;$("qText").textContent="Worksheet question loaded above. Press New question to quiz yourself.";};$("presets").appendChild(b)});
+// practice presets (new combos, not the worksheet)
+const PRACTICE=[
+ {t:"P1",m:"TB",p:"HFP",f:"LPO"},{t:"P2",m:"TRI",p:"FFS",f:"RAO"},{t:"P3",m:"TB",p:"FFP",f:"RPO"},
+ {t:"P4",m:"TRI",p:"HFS",f:"LAO"},{t:"P5",m:"TB",p:"HFS",f:"LPO"},{t:"P6",m:"TRI",p:"FFP",f:"RT LAT"},
+ {t:"P7",m:"TB",p:"HFP",f:"kV AP / PA"},{t:"P8",m:"TRI",p:"HFS",f:"kV lateral"},{t:"P9",m:"TB",p:"FFP",f:"LAO"},
+ {t:"P10",m:"TRI",p:"HFP",f:"LT LAT"}];
+PRACTICE.forEach(w=>{const b=document.createElement("button");b.textContent=w.t;b.onclick=()=>startQ(w.m,w.p,w.f);$("presets").appendChild(b)});
 
 // quiz
-const TARGETS=["RAO","LAO","RPO","LPO","RAO","LAO","RPO","LPO","AP","PA","RT LAT","LT LAT"];
-function newQ(){
-  machine=Math.random()<.5?"TB":"TRI";pos=["HFS","HFP","FFS","FFP"][Math.floor(Math.random()*4)];beam="MV";
-  const t=TARGETS[Math.floor(Math.random()*TARGETS.length)];quiz={t,lock:true,hint:0};
+const TARGETS=["RAO","LAO","RPO","LPO","RAO","LAO","RPO","LPO","AP","PA","RT LAT","LT LAT","kV lateral","kV AP / PA"];
+function kvAxis(gg){const f=fieldAt(mod(toScreen(gg)+90));return (f==="RT LAT"||f==="LT LAT")?"kV lateral":(f==="AP"||f==="PA")?"kV AP / PA":"kV oblique"}
+function startQ(m,p,t){
+  machine=m;pos=p;beam=t.startsWith("kV")?"kV":"MV";quiz={t,lock:true,hint:0};
   $("mTB").setAttribute("aria-pressed",machine==="TB");$("mTRI").setAttribute("aria-pressed",machine==="TRI");
-  $("bMV").setAttribute("aria-pressed",true);$("bKV").setAttribute("aria-pressed",false);syncPos();
+  $("bMV").setAttribute("aria-pressed",beam==="MV");$("bKV").setAttribute("aria-pressed",beam==="kV");syncPos();
   $("qFb").innerHTML="";
-  $("qText").textContent=`On a ${machine==="TB"?"TrueBeam":"Trilogy"}, the patient is ${POS[pos].full} (${pos}). Set the gantry for ${/LAT|AP|PA/.test(t)?"a":"an"} ${t}.`;
+  const what=beam==="kV"?(t==="kV lateral"?"a kV lateral picture":"a kV AP or PA picture"):(/LAT|AP|PA/.test(t)?"a ":"an ")+t;
+  $("qText").textContent=`On a ${machine==="TB"?"TrueBeam":"Trilogy"}, the patient is ${POS[pos].full} (${pos}). Set the gantry for ${what}.`;
   hideAnswers(true);render();
+  document.querySelector(".main").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
 }
+function newQ(){startQ(Math.random()<.5?"TB":"TRI",["HFS","HFP","FFS","FFP"][Math.floor(Math.random()*4)],TARGETS[Math.floor(Math.random()*TARGETS.length)])}
 function hideAnswers(h){$("wedges").style.visibility=h?"hidden":"visible";
   document.querySelectorAll("#tbl, .big, #why").forEach(e=>e.style.visibility=h?"hidden":"visible")}
 const _render=render;render=function(){_render();if(quiz&&quiz.lock)hideAnswers(true)};
 function endQuiz(){quiz=null;hideAnswers(false)}
-$("qCheck").onclick=()=>{if(!quiz){$("qFb").innerHTML='<span class="no">Press New question first.</span>';return}
-  const f=fieldAt(toScreen(g));
-  if(f===quiz.t){$("qFb").innerHTML=`<span class="ok">Yes! ${g}° is ${quiz.t === "AP"||quiz.t==="PA"?"the":"an"} ${quiz.t} for ${pos} on ${machine==="TB"?"TrueBeam":"Trilogy"}.</span>`;hideAnswers(false);quiz.lock=false}
-  else $("qFb").innerHTML=`<span class="no">Not yet. ${g}° makes ${f}. Try again or ask for a hint.</span>`};
+$("qCheck").onclick=()=>{if(!quiz){$("qFb").innerHTML='<span class="no">Press New question or a practice button first.</span>';return}
+  const kv=quiz.t.startsWith("kV");const f=kv?kvAxis(g):fieldAt(toScreen(g));
+  if(f===quiz.t){$("qFb").innerHTML=`<span class="ok">Yes! Gantry ${g}° gives ${kv?"a "+quiz.t+" picture":(/AP|PA|LAT/.test(quiz.t)?"the ":"an ")+quiz.t} for ${pos} on ${machine==="TB"?"TrueBeam":"Trilogy"}.</span>`;hideAnswers(false);quiz.lock=false}
+  else $("qFb").innerHTML=`<span class="no">Not yet. Gantry ${g}° gives ${kv?"a "+f+" picture":f}. Try again or ask for a hint.</span>`};
 $("qHint").onclick=()=>{if(!quiz)return;const p=POS[pos];quiz.hint++;
-  if(quiz.hint===1)$("qFb").innerHTML=`<span class="no">Hint. On this machine the front is at ${toMachine(p.ant)}° and the patient's right is at ${toMachine(p.right)}°.</span>`;
-  else{hideAnswers(false);$("qFb").innerHTML=`<span class="no">Here are the colors. Find ${quiz.t} and drag the gantry into it.</span>`}};
+  if(quiz.t.startsWith("kV")&&quiz.hint===1)$("qFb").innerHTML=`<span class="no">Hint. The kV tube is 90° away from the MV head. For a kV lateral, park the gantry where MV would shoot front or back. For kV AP or PA, park it at a side.</span>`;
+  else if(quiz.hint===1)$("qFb").innerHTML=`<span class="no">Hint. On this machine the front is at ${toMachine(p.ant)}° and the patient's right is at ${toMachine(p.right)}°.</span>`;
+  else{hideAnswers(false);$("qFb").innerHTML=`<span class="no">Here is the full map. Find ${quiz.t} and drag the gantry there.</span>`}};
 $("qNew").onclick=newQ;
 $("qFree").onclick=()=>{endQuiz();$("qFb").innerHTML="";$("qText").textContent="Free play. Press New question when you want a quiz.";render()};
 
-render();$("qText").textContent="Press New question to get a random machine, position and field.";
+render();$("qText").textContent="Tap a practice button above, or press New question for a random one.";
 </script>
 
 </body>
